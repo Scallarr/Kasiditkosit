@@ -1,4 +1,5 @@
 import React from 'react';
+import studentImg from "./assets/รูปนักศึกษา.jpg";
 
 const Header = () => {
   return (
@@ -42,7 +43,7 @@ const Header = () => {
           <div className="profile-glow-ring"></div>
           <div className="profile-card">
             <img
-              src="src/assets/รูปนักศึกษา.jpg"
+              src={studentImg}
               alt="Kasidit Pimpimai"
               onError={(e) => {
                 // Failback to fallback illustration or empty placeholder if image has issues
