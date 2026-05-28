@@ -10,44 +10,6 @@ import mfuroomreservation from '../assets/mfuroomreservation.png'
 import imageclassification from '../assets/imageclassification.png'
 import mfureport from '../assets/Final_Report_MFU_Food_Guide_and_Review_Application.pdf'
 
-/* ── Tech / Tool icon mapping ── */
-const techIcons: Record<string, string> = {
-  'Dart(Flutter)': '🐦',
-  'Flutter': '🐦',
-  'VS code': '💻',
-  'Visual Studio Code': '💻',
-  'Postman': '📮',
-  'Rest Api': '🔌',
-  'RESTful API': '🔌',
-  'UX/UI Designer': '🎨',
-  'Fontend Developtment': '🖥️',
-  'Frontend Development': '🖥️',
-  'Sourcetree': '🌳',
-  'sourcetree': '🌳',
-  'Node.js': '🟢',
-  'Express': '🚂',
-  'Express.js': '🚂',
-  'MySQL': '🐬',
-  'MongoDB': '🍃',
-  'PostgreSQL': '🐘',
-  'React': '⚛️',
-  'React.js': '⚛️',
-  'React Native': '⚛️',
-  'TypeScript': '📘',
-  'JavaScript': '⚡',
-  'HTML5 & CSS': '🌐',
-  'Bootstrap': '🅱️',
-  'Google Maps': '🗺️',
-  'Socket.io': '🔄',
-  'Docker': '🐳',
-  'Git & GitHub': '🐙',
-  'GitHub': '🐙',
-  'Figma': '🎭',
-  'vs code': '💻',
-  'Python': '🐍',
-  'Jupyter Notebook': '📓',
-};
-
 
 type ProjectLink = {
   label: string;
@@ -58,7 +20,7 @@ type ProjectLink = {
 type Project = {
   id: number;
   title: string;
-  role?: 'Front-end' | 'Back-end' | 'Full-stack' | 'AI-Machine learning';
+  role?: 'Front-end Development' | 'Back-end Development' | 'Full-stack Development' | 'AI-Machine learning';
   description: string;
   tech: string[];
   image: string;
@@ -76,48 +38,7 @@ type Project = {
   };
 };
 
-const renderHighlightedDescription = (text: string) => {
-  const target = 'Provincial Electricity Authority (PEA)';
-  const target2 = 'Mae Fah Luang University (MFU)';
-  if (!text.includes(target)) return text;
-
-  const parts = text.split(target);
-  const parts2 = text.split(target2);
-  return parts.reduce((prev: React.ReactNode[], current, index) => {
-    if (index === 0) {
-      return [current];
-    }
-    return [
-      ...prev,
-      <a
-        key={index}
-        href="https://www.pea.co.th"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          color: '#ff7a00',
-          fontWeight: 600,
-          textDecoration: 'none',
-          borderBottom: '1px dashed #ff7a00',
-          transition: 'var(--transition-fast)',
-          cursor: 'pointer',
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = '#ff9d42';
-          e.currentTarget.style.borderBottomColor = '#ff9d42';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = '#ff7a00';
-          e.currentTarget.style.borderBottomColor = '#ff7a00';
-        }}
-      >
-        Provincial Electricity Authority (PEA) ↗
-      </a>,
-      current
-    ];
-  }, []);
-};
-
+const renderHighlightedDescription = (text: string) => { const mappings = [{ target: 'Provincial Electricity Authority (PEA)', href: 'https://www.pea.co.th', color: '#ff7a00', hover: '#ff9d42', }, { target: 'Mae Fah Luang University (MFU)', href: 'https://www.mfu.ac.th', color: '#00e5ff', hover: '#67e8f9', },]; let result: React.ReactNode[] = [text]; mappings.forEach(({ target, href, color, hover }) => { result = result.flatMap((item) => { if (typeof item !== 'string' || !item.includes(target)) { return [item]; } const parts = item.split(target); return parts.flatMap((part, index) => { if (index === parts.length - 1) { return [part]; } return [part, <a key={`${target}-${index}`} href={href} target="_blank" rel="noopener noreferrer" style={{ color, fontWeight: 600, textDecoration: 'none', borderBottom: `1px dashed ${color}`, transition: 'var(--transition-fast)', cursor: 'pointer', }} onMouseEnter={(e) => { e.currentTarget.style.color = hover; e.currentTarget.style.borderBottomColor = hover; }} onMouseLeave={(e) => { e.currentTarget.style.color = color; e.currentTarget.style.borderBottomColor = color; }} > {target} </a>,]; }); }); }); return <>{result}</>; };
 const renderBoldText = (text: string): React.ReactNode => {
   const parts: React.ReactNode[] = [];
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -147,7 +68,6 @@ const renderBoldText = (text: string): React.ReactNode => {
     const url = match[2];
     const isPeaLink = url.includes('peachannel.com') || url.includes('pea.co.th');
 
-    const linkIcon = techIcons[linkText] || '';
     parts.push(
       <a
         key={`link-${match.index}`}
@@ -171,7 +91,7 @@ const renderBoldText = (text: string): React.ReactNode => {
           e.currentTarget.style.borderBottomColor = isPeaLink ? '#ff7a00' : 'var(--accent-cyan)';
         }}
       >
-        {linkIcon && `${linkIcon} `}{linkText} ↗
+        {linkText} ↗
       </a>
     );
     lastIndex = linkRegex.lastIndex;
@@ -190,10 +110,21 @@ const Projects = () => {
     {
       id: 1,
       title: 'PEA LIFE Application',
-      role: 'Front-end',
+      role: 'Front-end Development',
       description:
         'An internal digital platform for Provincial Electricity Authority (PEA) personnel across Thailand, supporting employee management, online leave requests, travel authorization, and welfare services.',
-      tech: ['Dart(Flutter)', 'VS code', 'Postman', 'Rest Api', 'UX/UI Designer', 'Fontend Developtment'],
+      tech: [
+        '🎯 Dart (Flutter)',
+        '🔗 REST API',
+        '🔑 JWT Authentication',
+        '🧪 Postman',
+        '🖌️ Figma',
+
+        '🌳 Sourcetree',
+
+
+      ],
+
       image: peaLifeImg,
       ios: pealifeios,
       android: 'https://play.google.com/store/apps/details?id=th.co.pea.peaeasylife&hl=en-SG',
@@ -201,7 +132,7 @@ const Projects = () => {
       location: 'PEA',
       details: {
         subtitle:
-          'Personnel management application for Provincial Electricity Authority (PEA) employees across Thailand',
+          'Customer service and privilege management application for Provincial Electricity Authority (PEA) customers across Thailand',
         whatWeDid: [
           '**Target Audience:** Internal application exclusively designed for PEA personnel across Thailand.',
 
@@ -228,10 +159,20 @@ const Projects = () => {
     {
       id: 2,
       title: 'PEA Privilege Application',
-      role: 'Front-end',
+      role: 'Front-end Development',
       description:
         'A digital platform developed for Provincial Electricity Authority (PEA) business customers, providing convenient access to important information, online services, and request tracking in one centralized system to enhance user experience and service efficiency.',
-      tech: ['Dart(Flutter)', 'VS code', 'Postman', 'Rest Api', 'UX/UI Designer', 'Sourcetree', 'Fontend Developtment'],
+      tech: [
+        '🎯 Dart (Flutter)',
+        '🔗 REST API',
+        '🔑 JWT Authentication',
+        '🧪 Postman',
+        '🖌️ Figma',
+
+        '🌳 Sourcetree',
+
+      ],
+
       image: peaprivillegeImg,
       location: 'PEA',
       ios: 'https://apps.apple.com/md/app/pea-privilege/id6461728753',
@@ -266,17 +207,32 @@ const Projects = () => {
     {
       id: 3,
       title: 'MFU Food Guide And Review Application',
-      role: 'Full-stack',
+      role: 'Full-stack Development',
       location: 'MFU',
       description:
-        'A mobile application for MFU students and staff to discover restaurants, explore menus, write reviews, and interact with AI-powered chatbot, content moderation, and community features within the university',
-      tech: ['UX/UI Designer', 'Dart(Flutter)', 'Node.js', 'Express', 'MySQL', 'vs code', 'sourcetree'],
+        'A mobile application for Mae Fah Luang University (MFU) students and staff to discover restaurants, explore menus, write reviews, and interact with AI-powered chatbot, content moderation, and community features within the university',
+      tech: [
+        '🎯 Dart',
+        '⚡ Node.js',
+        '🖌️ Figma',
+
+        '🛡️ Perspective API',
+
+        '☁️ Render ',
+        '🗄️ MySQL',
+        '🔐 Google Authentication'
+        ,
+
+
+
+      ],
+
       image: mfufoodguide,
       github: 'https://github.com/Scallarr/MFU_FOOD_GUIDE_REVIEW',
       figma: 'https://www.figma.com/design/HQAn8H8CkwZOLRRJBbIV3Y/MFU-Food-Guide---Review-Application?node-id=0-1&p=f',
       report: mfureport,
       details: {
-        subtitle: 'แพลตฟอร์มบริหารจัดการงานและโครงการภายในทีมแบบร่วมมือกัน',
+        subtitle: 'Restaurant recommendation and food review application for Mae Fah Luang University (MFU) students and staff',
         whatWeDid: [
           '**Target Audience:** Platform designed for MFU students, staff, and university visitors.',
           '**Food Recommendation System:** Restaurant recommendation and review system for MFU students and staff.',
@@ -320,10 +276,20 @@ const Projects = () => {
     {
       id: 4,
       title: 'MFU Movie Assets Application ',
-      role: 'Full-stack',
+      role: 'Full-stack Development',
       description:
-        'A smart mobile application designed for MFU students and staff to search, borrow, and manage movies conveniently anytime and anywhere through a modern and user-friendly digital platform.',
-      tech: ['Dart(Flutter)', 'VS code', 'Postman', 'Rest Api', 'UX/UI Designer', 'Fontend Developtment'],
+        'A smart mobile application designed for Mae Fah Luang University (MFU) students and staff to search, borrow, and manage movies conveniently anytime and anywhere through a modern and user-friendly digital platform.',
+      tech: [
+        '🎯 Dart (Flutter)',
+        '🚂 Node.js',
+
+        '🔗 REST API',
+        '🖌️ Figma',
+        '🔑 JWT Authentication',
+
+        '🗄️ MySQL',
+      ],
+
       image: mfubookasset,
       ios: pealifeios,
       android: 'https://play.google.com/store/apps/details?id=th.co.pea.peaeasylife&hl=en-SG',
@@ -331,7 +297,7 @@ const Projects = () => {
       location: 'MFU',
       details: {
         subtitle:
-          'Personnel management application for Provincial Electricity Authority (PEA) employees across Thailand',
+          'Movie borrowing and asset management application for Mae Fah Luang University (MFU) students and staff',
         whatWeDid: [
           '**Movie Borrowing System:** Search, borrow, and manage movie rentals through the mobile application.',
           '**Approval Workflow:** Approver system for approving movie borrowing requests.',
@@ -356,6 +322,7 @@ const Projects = () => {
           '**Database Management:** Designed and managed the [MySQL](https://www.mysql.com/) database structure using [MySQL Workbench](https://www.mysql.com/products/workbench/) for efficient data management and system workflows.',
 
           '**Testing & Optimization:** Performed debugging, testing, and performance optimization to improve system stability and responsiveness.',
+
           '**Team Collaboration:** Collaborated with team members using [Sourcetree](https://www.sourcetreeapp.com/) and [GitHub](https://github.com)) for version control, code management, and collaborative development workflows.',
         ],
       },
@@ -363,14 +330,24 @@ const Projects = () => {
     {
       id: 5,
       title: 'MFU Room Reservation Website',
-      role: 'Full-stack',
+      role: 'Full-stack Development',
       description:
         'A lifestyle benefit platform for Provincial Electricity Authority (PEA) employees, offering food discounts, merchant rewards, and exclusive dining privileges at partner restaurants.',
-      tech: ['React Native', 'TypeScript', 'Node.js', 'PostgreSQL', 'Google Maps'],
+      tech: [
+        '🖌️ Figma',
+        '🌐 HTML & CSS',
+        '⚡ JavaScript',
+        '🚂 Node.js',
+        '🗄️ MySQL',
+        '🌳 Sourcetree',
+
+      ],
+
       image: mfuroomreservation,
       location: 'MFU',
       details: {
-        subtitle: 'แอปพลิเคชันรวมสิทธิพิเศษและส่วนลดร้านอาหารสำหรับบุคลากร กฟภ.',
+        subtitle: 'Room reservation and facility management website for Mae Fah Luang University (MFU) students and staff',
+
         whatWeDid: [
           '**Restaurant Search:** พัฒนาแอปพลิเคชันค้นหาร้านอาหารและสิทธิพิเศษสำหรับพนักงาน',
           '**QR Code Scanner:** ออกแบบและพัฒนาระบบสแกนคิวอาร์โค้ด (QR Code) เพื่อรับสิทธิ์ส่วนลดหน้าร้าน',
@@ -387,13 +364,21 @@ const Projects = () => {
       location: 'MFU',
       description:
         'A collaborative workspace and team management application simulating interactive Kanban boards, task delegation, and progress milestones.',
-      tech: ['React.js', 'Node.js', 'Socket.io', 'Express', 'PostgreSQL'],
+      tech: [
+        '🧠 Machine Learning',
+        '🐍 Python',
+        '🎈 Streamlit',
+        '📚 TensorFlow',
+        '🖼️ OpenCV',
+        '🔥 CNN',
+
+      ],
       image: imageclassification,
       github: 'https://github.com',
       demo: 'https://demo.com',
       report: 'https://demo.com/synctask-report.pdf',
       details: {
-        subtitle: 'แพลตฟอร์มบริหารจัดการงานและโครงการภายในทีมแบบร่วมมือกัน',
+        subtitle: 'AI-powered image classification website for image recognition and machine learning prediction through an interactive web platform',
         whatWeDid: [
           '**Kanban Board:** พัฒนากระดานงานแบบ Kanban Board',
           '**Real-time Updates:** ทำระบบแจ้งเตือนและอัปเดตงานแบบ Real-time',
@@ -512,26 +497,26 @@ const Projects = () => {
                     textTransform: 'uppercase',
                     width: 'fit-content',
                     background:
-                      project.role === 'Full-stack'
+                      project.role === 'Full-stack Development'
                         ? 'rgba(0, 229, 255, 0.08)'
-                        : project.role === 'Back-end'
+                        : project.role === 'Back-end Development'
                           ? 'rgba(245, 158, 11, 0.08)'
                           : 'rgba(139, 92, 246, 0.08)',
                     border:
-                      project.role === 'Full-stack'
+                      project.role === 'Full-stack Development'
                         ? '1px solid rgba(0, 229, 255, 0.3)'
-                        : project.role === 'Back-end'
+                        : project.role === 'Back-end Development'
                           ? '1px solid rgba(245, 158, 11, 0.3)'
                           : '1px solid rgba(139, 92, 246, 0.3)',
                     color:
-                      project.role === 'Full-stack'
+                      project.role === 'Full-stack Development'
                         ? '#00e5ff'
-                        : project.role === 'Back-end'
+                        : project.role === 'Back-end Development'
                           ? '#f59e0b'
                           : '#c4b5fd',
                   }}
                 >
-                  {project.role === 'Full-stack' ? '⚡' : project.role === 'Back-end' ? '⚙️' : '🎨'}{' '}
+                  {project.role === 'Full-stack Development' ? '⚡' : project.role === 'Back-end Development' ? '⚙️' : '🤖'}{' '}
                   {project.role}
                 </span>
               )}
@@ -541,7 +526,7 @@ const Projects = () => {
               <div className="project-tech">
                 {project.tech.map((tag, idx) => (
                   <span key={idx} className="tech-badge">
-                    {techIcons[tag] && <span style={{ marginRight: '0.3rem' }}>{techIcons[tag]}</span>}{tag}
+                    {tag}
                   </span>
                 ))}
               </div>
