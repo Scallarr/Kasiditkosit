@@ -234,41 +234,48 @@ const Projects = () => {
       details: {
         subtitle: 'Restaurant recommendation and food review application for Mae Fah Luang University (MFU) students and staff',
         whatWeDid: [
-          '**Target Audience:** Platform designed for MFU students, staff, and university visitors.',
-          '**Food Recommendation System:** Restaurant recommendation and review system for MFU students and staff.',
-          '**Smart Filtering:** Restaurant filtering by rating, location, and food category.',
-          '**Leaderboard System:** Ranking system for top-rated restaurants and most-liked users.',
-          '**Community Threads:** Threads community for food discussions and user interactions.',
-          '**AI Assistant:** AI-powered chatbot assistant for application support and general questions.',
-          '**AI Moderation:** AI moderation system for detecting inappropriate reviews and messages.',
-          '**Reward & Coin System:** Coin and profile shop system with reward-based engagement.',
-          '**Admin Management:** Administrative system for managing users, reviews, restaurants, and application content.',
-          '**Role Management:** Role-based access control for Guest, User, and Admin management.',
+          '**Authentication, Session & Role Management:** Secure login system with session handling and role-based access control for Guest, User, and Admin roles.',
+          '**Restaurant Discovery & Recommendation:** Browse, search, filter, and explore restaurants within the university through categorized listings and recommendation features.',
+          '**Review & Rating System:** Create, view, and manage restaurant reviews with multi-category rating systems to support user decision-making.',
+          '**Community Threads & Social Interaction:** Community discussion system for posting questions, sharing opinions, and replying to other users, integrated with AI-powered inappropriate language detection and content filtering.',
+          '**Leaderboard & Engagement System:** User ranking and engagement features designed to encourage participation and community interaction within the application.',
+          '**Analytics Dashboard & Insights:** Dashboard for displaying restaurant statistics, review scores, and analytical insights for monitoring overall platform activity.',
+          '**User Profile & Personalization:** Manage user profiles, profile images, and personal account information within the application.',
+
+          '**AI Assistant Integration (Atlas/Nexus):** Dual-mode AI assistant designed to provide recommendations, answer questions, and support users based on different usage contexts.',
+
+          '**Admin Management Suite:** Administrative tools for managing restaurants, menus, reviews, users, and backend system configurations.',
+
+          '**Account Restriction Handling:** Account moderation system for handling user restrictions, bans, unban scheduling, and access control management.'
+
         ],
 
         techHighlight: [
-          '**Cross-Platform Development:** Developed and maintained the [Flutter](https://flutter.dev) mobile application for Android and iOS platforms.',
+          '**Authentication, Session & Role Management:** Implemented secure authentication and persistent session handling using [JWT](https://jwt.io/) and [shared_preferences](https://pub.dev/packages/shared_preferences), including token-based API access, login state persistence, and role-aware navigation flows.',
 
-          '**UI/UX Implementation:** Designed and improved the user interface for a modern and user-friendly experience.',
+          '**Mobile UI/UX & Frontend Development:** Designed and developed responsive multi-screen mobile interfaces with [Flutter](https://flutter.dev) and Dart for User and Admin experiences, covering restaurant discovery, dashboards, reviews, discussion threads, profile management, and AI chat modules.',
 
-          '**Secure Authentication:** Implemented [Google OAuth](https://developers.google.com/identity/protocols/oauth2) login to restrict access to verified MFU students and staff.',
+          '**Backend Integration & API Workflow:** Integrated Flutter modules with [RESTful APIs](https://restfulapi.net/) powered by [Node.js](https://nodejs.org/) to support restaurant management, review workflows, thread interactions, account moderation, profile handling, and admin operations.',
 
-          '**AI Chatbot Development:** Integrated [Cohere API](https://cohere.com/) to build AI-powered chatbot functionalities for user assistance and application guidance.',
+          '**Database & Data Workflow Management:** Managed relational database operations in [MySQL](https://www.mysql.com/) for restaurant records, review states, user activity tracking, moderation history, ratings, and API-driven transactional workflows.',
 
-          '**AI Safety System:** Implemented [Google Perspective API](https://perspectiveapi.com/) for real-time moderation of inappropriate reviews, threads, and user-generated content.',
+          '**AI Assistant Integration (Atlas & Nexus):** Built dual-assistant AI experiences by integrating external LLM services such as [Cohere](https://cohere.com/) for general assistance (Atlas) and application-context guidance (Nexus), including conversational UI states, typing indicators, and assistant switching workflows.',
 
-          '**Community System Development:** Developed restaurant review, leaderboard, and discussion thread systems to improve user engagement.',
+          '**Restaurant Discovery, Search & Rating Experience:** Developed restaurant search, filtering, sorting, category segmentation, and detailed rating systems (overall, hygiene, flavor, service) to improve restaurant discoverability and user decision support.',
 
-          '**Backend & API Integration:** Connected the  frontend with [Node.js](https://nodejs.org/) REST APIs for real-time communication and data handling.',
+          '**Community, Review & Engagement Features:** Implemented review, thread, and reply systems to support user interaction, community engagement, content visibility, and admin moderation workflows within the platform.',
+          '**Content Safety & Toxic Language Detection:** Integrated [Perspective API](https://developers.perspectiveapi.com/) for real-time toxicity/profanity detection in user-generated text (e.g., reviews and threads), enabling safer community interactions and moderation support.',
+          '**Analytics Dashboard & Reporting System:** Built dashboard visualizations and reporting interfaces for restaurant statistics, rating distributions, category insights, and operational monitoring for users and administrators.',
 
-          '**Database Architecture:** Designed and managed [MySQL](https://www.mysql.com/) database structures, relationships, and system workflows.',
+          '**Cloud Media Upload & Storage:** Integrated [Cloudinary](https://cloudinary.com/) for cloud-based image upload, storage, and delivery workflows, enabling reusable media assets across restaurant, menu, and user profile modules.',
 
-          '**Cloud Deployment:** Configured and deployed backend services on [Render](https://render.com) for cloud hosting and online accessibility.',
+          '**Image Loading & Performance Optimization:** Optimized image-heavy screens using [cached_network_image](https://pub.dev/packages/cached_network_image), [flutter_cache_manager](https://pub.dev/packages/flutter_cache_manager), and [shimmer](https://pub.dev/packages/shimmer) with retryable loading, caching, and precache strategies for improved performance and user experience.',
 
-          '**Testing & Optimization:** Performed debugging, testing, and performance optimization  to improve stability and responsiveness.',
+          '**Role-Based Access & Moderation System:** Developed role-specific operational flows for Users and Admins, including review approval pipelines, pending content handling, user management, account restriction controls, and ban-status presentation.',
 
-          '**Team Collaboration:** Collaborated with team members using [Sourcetree](https://www.sourcetreeapp.com/) and [GitHub](https://github.com)) for version control, code management, and collaborative development workflows.',
+          '**Testing & Debugging:** Conducted API validation, state-flow debugging, and end-to-end functional testing using [Postman](https://www.postman.com/), Flutter debugging tools, and backend response verification to ensure stable cross-module behavior and synchronized data flow.',
 
+          '**Team Collaboration & Version Control:** Collaborated with team members through [GitHub](https://github.com/) using branch-based workflows, feature integration, version control, and coordinated frontend-backend development practices.'
         ]
       },
 
@@ -299,40 +306,47 @@ const Projects = () => {
         subtitle:
           'Movie borrowing and asset management application for Mae Fah Luang University (MFU) students and staff',
         whatWeDid: [
-          '**Movie Borrowing System:** Search, borrow, and manage movie rentals through the mobile application.',
-          '**Approval Workflow:** Approver system for approving movie borrowing requests.',
-          '**Return Verification:** Administrative system for verifying and managing movie returns.',
-          '**Admin Dashboard:** Dashboard for monitoring overall application activities and movie management.',
-          '**User Authentication:** Secure login system for authorized MFU users.',
-          '**Responsive UI:** Modern and user-friendly interface optimized for mobile devices.',
+          '**Target Audience:** Platform designed for MFU students, university staff, lecturers, and campus visitors interested in browsing, borrowing, and managing university movie and media assets through a centralized digital platform.',
+          '**Authentication & Role-Based Access:** Secure user registration and login system with role-based access control for User, Approver, and Admin.',
+
+          '**Asset Catalog & Discovery:** Browse and explore movie/assets collections with categorized listings, search functionality, and recommended items.',
+
+          '**Borrow Request Workflow:** Allow users to submit borrowing requests and track request status throughout the approval process.',
+
+          '**Approval Management:** Enable approvers to review, verify, approve, or reject borrowing requests through a dedicated workflow system.',
+
+          '**Asset Administration:** Allow administrators to add, edit, manage, and disable movie/assets records and availability status.',
+
+          '**Return & Status Processing:** Manage item return workflows and automatically update borrowing and availability statuses.',
+
+          '**History & Audit Trail:** Record and display borrowing history, approval logs, and activity records for each user role.',
+
+          '**Dashboard & Operational Insights:** Provide dashboard summaries and operational statistics for Admin and Approver management.'
         ],
         techHighlight: [
-          '**Cross-Platform Development:** Developed and maintained the movie borrowing mobile application using [Dart (Flutter)](https://flutter.dev) for Android and iOS platforms.',
+          '**Authentication & Session Management:** Developed secure authentication and session handling with [JWT](https://jwt.io/) and [shared_preferences](https://pub.dev/packages/shared_preferences) to support login, access control, token persistence, and cross-screen session flow.',
 
-          '**UI/UX Implementation:** Designed and improved the user interface  for a modern and user-friendly experience.',
+          '**Mobile UI/UX & Frontend Development:** Designed and built responsive mobile interfaces with [Flutter](https://flutter.dev) and Dart, featuring API-driven interactions and user experiences tailored for multiple roles.',
 
-          '**Secure Authentication:** Implemented secure login and user authentication for authorized MFU users.',
+          '**Backend Integration & API Workflow:** Connected Flutter frontend modules with [RESTful APIs](https://nodejs.org/) powered by [Node.js](https://nodejs.org/) to handle borrowing requests, approval workflows, return processing, and transaction tracking.',
 
-          '**Approval System Development:** Developed the workflow system for approving movie borrowing requests.',
+          '**Database Management:** Managed relational database operations with [MySQL](https://www.mysql.com/), including SQL queries for asset records, borrow requests, approval updates, return logs, and activity history.',
 
-          '**Admin System Implementation:** Developed administrative features for verifying movie returns and monitoring application activities.',
+          '**Asset & Media Handling:** Built media selection and asset presentation features with [file_picker](https://pub.dev/packages/file_picker) and [carousel_slider](https://pub.dev/packages/carousel_slider) for profile customization and featured content displays.',
 
-          '**Backend Development & API Integration:** Developed the backend system using [Node.js](https://www.nodejs.org/) and connected the Flutter frontend with [REST APIs](https://restfulapi.net/) for real-time data communication and management.',
+          '**Role-Based Workflow System:** Developed end-to-end operational workflows for User, Approver, and Admin roles, covering request submission, approval actions, asset administration, return handling, and dashboard visibility.',
 
-          '**Database Management:** Designed and managed the [MySQL](https://www.mysql.com/) database structure using [MySQL Workbench](https://www.mysql.com/products/workbench/) for efficient data management and system workflows.',
+          '**Testing & Debugging:** Conducted API validation, debugging, and end-to-end system testing with [Postman](https://www.postman.com/), Flutter debugging tools, and database verification processes to ensure stable functionality and synchronized data flow.',
 
-          '**Testing & Optimization:** Performed debugging, testing, and performance optimization to improve system stability and responsiveness.',
-
-          '**Team Collaboration:** Collaborated with team members using [Sourcetree](https://www.sourcetreeapp.com/) and [GitHub](https://github.com)) for version control, code management, and collaborative development workflows.',
-        ],
+          '**Team Collaboration & Version Control:** Collaborated with team members through [GitHub](https://github.com/) for source control, branch management, feature integration, and coordinated frontend-backend development.'
+        ]
       },
     },
     {
       id: 5,
       title: 'MFU Room Reservation Website',
       role: 'Full-stack Development',
-      description:
-        'A lifestyle benefit platform for Provincial Electricity Authority (PEA) employees, offering food discounts, merchant rewards, and exclusive dining privileges at partner restaurants.',
+      description: 'A web-based room booking app for MFU students, lecturers, and staff to view room availability, submit and manage booking requests, and handle room schedules with role-based access and daily automated status reset.',
       tech: [
         '🖌️ Figma',
         '🌐 HTML & CSS',
@@ -349,12 +363,31 @@ const Projects = () => {
         subtitle: 'Room reservation and facility management website for Mae Fah Luang University (MFU) students and staff',
 
         whatWeDid: [
-          '**Restaurant Search:** พัฒนาแอปพลิเคชันค้นหาร้านอาหารและสิทธิพิเศษสำหรับพนักงาน',
-          '**QR Code Scanner:** ออกแบบและพัฒนาระบบสแกนคิวอาร์โค้ด (QR Code) เพื่อรับสิทธิ์ส่วนลดหน้าร้าน',
-          '**Navigation:** เชื่อมต่อแผนที่และระบบนำทางไปยังร้านค้าพันธมิตรใกล้เคียง',
-          '**Categorization:** จัดหมวดหมู่สิทธิประโยชน์ เช่น เมนูอาหาร เครื่องดื่ม ท่องเที่ยว และที่พัก',
+          "**Authentication & Roles:** Role-based login for student, lecturer, and staff",
+          "**Room Discovery:** Browse room lists with available time slots",
+          "**Booking Workflow:** Submit booking requests and track status (pending/approved/rejected)",
+          "**Lecturer Management:** Review and approve/reject student booking requests",
+          "**Staff Administration:** Add/edit rooms, upload room images, and enable/disable slots",
+          "**History & Reporting:** View user booking history and staff-level activity records",
+          "**Automation:** Daily automatic slot status reset "
         ],
-        techHighlight: 'React Native, Expo, Google Maps API, QR Code Scanner, Node.js, Express.js',
+        techHighlight: [
+          '**Authentication & Session Management:** Developed authentication and session management features using [bcrypt](https://www.npmjs.com/package/bcrypt), [express-session](https://www.npmjs.com/package/express-session), and [connect-flash](https://www.npmjs.com/package/connect-flash) for user registration, login, password encryption, and flash message handling.',
+
+          '**Backend Development:** Designed and developed the backend system using [Node.js](https://nodejs.org/) and [Express.js](https://expressjs.com/), including routes and business logic to support multi-role room booking workflows.',
+
+          '**Database Management:** Designed and managed the database using [MySQL](https://www.mysql.com/), including writing SQL queries for room booking, request approval, and booking history management.',
+
+          '**UI/UX Design & Frontend Development:** Designed user interface layouts and developed responsive frontend interfaces using [HTML](https://html.com/), [CSS](https://www.w3schools.com/css/), and [Bootstrap](https://getbootstrap.com/) to support role-based user experiences and seamless backend integration.',
+          '**File Handling & Upload System:** Implemented room image upload and file management features using [Multer](https://www.npmjs.com/package/multer) and [Path](https://nodejs.org/api/path.html) for staff room management.',
+
+          '**Automation System:** Implemented automation workflows using [node-cron](https://www.npmjs.com/package/node-cron) to automatically reset room slot statuses daily and reduce manual management tasks.',
+
+          '**Testing & Debugging:** Performed system testing and debugging using [Postman](https://www.postman.com/) and [MySQL Workbench](https://www.mysql.com/products/workbench/) to ensure stable end-to-end system functionality.',
+
+          '**Team Collaboration:** Collaborated with team members using [GitHub](https://github.com/) and [Sourcetree](https://www.sourcetreeapp.com/) for version control, code management, and collaborative development workflows.'
+        ],
+
       },
     },
     {
@@ -633,7 +666,7 @@ const Projects = () => {
                       paddingBottom: '0.35rem',
                     }}
                   >
-                    What I Did
+                    Responsibilities
                   </h4>
 
                   {Array.isArray(activeProject.details.techHighlight) ? (
