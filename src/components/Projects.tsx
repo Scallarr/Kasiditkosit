@@ -8,6 +8,7 @@ import mfufoodguide from '../assets/m.png'
 import mfubookasset from '../assets/mfubookasset.png'
 import mfuroomreservation from '../assets/mfuroomreservation.png'
 import imageclassification from '../assets/imageclassification.png'
+import imagecaptioning from '../assets/image_captioning.png'
 import mfureport from '../assets/Final_Report_MFU_Food_Guide_and_Review_Application.pdf'
 
 
@@ -116,9 +117,11 @@ const Projects = () => {
       tech: [
         '🎯 Dart (Flutter)',
         '🔗 REST API',
-        '🔑 JWT Authentication',
+        '🔑 JWT',
+        '  💾 Local storage',
         '🧪 Postman',
         '🖌️ Figma',
+
 
         '🌳 Sourcetree',
 
@@ -168,6 +171,7 @@ const Projects = () => {
         '🔑 JWT Authentication',
         '🧪 Postman',
         '🖌️ Figma',
+        '  💾 Local storage',
 
         '🌳 Sourcetree',
 
@@ -218,9 +222,10 @@ const Projects = () => {
 
         '🛡️ Perspective API',
 
-        '☁️ Render ',
+        '☁️ Render Server',
+        '📸 Cloudinary',
         '🗄️ MySQL',
-        '🔐 Google Authentication'
+        '🔐 Google OAuth   Authentication'
         ,
 
 
@@ -419,6 +424,63 @@ const Projects = () => {
           '**Dashboard:** สร้างแดชบอร์ดติดตามความคืบหน้าของทีม',
         ],
         techHighlight: 'React.js, Node.js, Express, Socket.io, PostgreSQL',
+      },
+    },
+    {
+      id: 7,
+      title: 'Image Captioning Application',
+      role: 'AI-Machine learning',
+      location: 'MFU',
+      description:
+        'A web-based application that automatically generates image captions using deep learning and computer vision. Users can upload images or use image URLs, and the system generates descriptive captions in real time through a simple and user-friendly interface.',
+      tech: [
+        '🧠 Machine Learning',
+        '🐍 Python',
+        '🎈 Streamlit',
+        '📚 TensorFlow',
+        '🖼️ OpenCV',
+        '🔥 CNN',
+
+      ],
+      image: imagecaptioning,
+      github: 'https://github.com',
+      demo: 'https://demo.com',
+      report: 'https://demo.com/synctask-report.pdf',
+      details: {
+        subtitle: 'AI-powered image classification website for image recognition and machine learning prediction through an interactive web platform',
+        whatWeDid: [
+          '**Image Caption Generation:** Generate automatic captions from uploaded images using AI.',
+
+          '**Local Image Upload:** Upload images directly from local devices.',
+
+          '**Image URL Loading:** Load and analyze images from external URLs.',
+
+          '**Real-Time AI Processing:** Process images and generate captions instantly.',
+
+          '**Image Preview System:** Preview selected images before analysis.',
+
+          '**User-Friendly Interface:** Simple and responsive web interface for easy interaction.',
+
+          '**Computer Vision Integration:** Utilize deep learning and computer vision technologies.',
+
+          '**API-Based Workflow:** Support API-driven image caption generation and processing.'
+        ],
+        techHighlight: ['**AI Model Integration:** Integrated the [BLIP image captioning model](https://huggingface.co/Salesforce/blip-image-captioning-base) from Hugging Face for automatic caption generation from uploaded images.',
+
+          '**Backend API Development:** Developed a [Python](https://python.org)  using FastAPI to process image uploads and return AI-generated captions in real time.',
+
+          '**Computer Vision Workflow:** Implemented image preprocessing and caption prediction workflows using [PIL](https://pillow.readthedocs.io/en/stable/), [Transformers](https://huggingface.co/docs/transformers/index), and deep learning-based image understanding.',
+
+          '**Desktop UI Development:** Designed and developed an interactive GUI application in [MATLAB/Octave](https://www.mathworks.com/products/matlab.html) for image upload, preview, and caption visualization.',
+
+          '**Image Upload & URL Processing:** Built support for local image uploads and external image URL loading with real-time preview functionality. ',
+
+          '**Frontend-Backend Communication:** Connected the MATLAB frontend with the Python captioning server using HTTP-based API communication workflows. ',
+
+          '**Real-Time Caption Generation:** Implemented asynchronous caption generation flow with loading states and dynamic caption updates for improved user experience.',
+
+          '**Testing & Debugging:** Performed system testing and debugging for image processing, API communication, and caption response handling across the application workflow.'
+        ]
       },
     },
   ];
