@@ -598,52 +598,78 @@ h6 {
 /* Nav Toggle */
 .nav-toggle {
   display: none;
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 2000;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  outline: none;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.nav-toggle:active {
+  transform: scale(0.95);
 }
 
 .nav-toggle-icon {
   display: block;
-  width: 24px;
+  width: 18px;
   height: 2px;
   background: #fff;
+  border-radius: 99px;
   position: relative;
-  transition: var(--transition-smooth);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-toggle-icon::before,
 .nav-toggle-icon::after {
   content: '';
   position: absolute;
-  width: 24px;
+  width: 18px;
   height: 2px;
   background: #fff;
+  border-radius: 99px;
   left: 0;
-  transition: var(--transition-smooth);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-toggle-icon::before {
-  top: -7px;
+  transform: translateY(-6px);
 }
 
 .nav-toggle-icon::after {
-  top: 7px;
+  transform: translateY(6px);
+}
+
+.nav-toggle.open {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 .nav-toggle.open .nav-toggle-icon {
-  background: transparent;
+  background: transparent !important;
 }
 
 .nav-toggle.open .nav-toggle-icon::before {
-  transform: rotate(45deg);
-  top: 0;
+  transform: rotate(45deg) translateY(0);
 }
 
 .nav-toggle.open .nav-toggle-icon::after {
-  transform: rotate(-45deg);
-  top: 0;
+  transform: rotate(-45deg) translateY(0);
 }
 
 @keyframes hue-rotate {
@@ -989,11 +1015,11 @@ h6 {
 }
 
 .skill-tag {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--glass-border);
-  padding: 0.55rem 1.1rem;
-  border-radius: 99px;
-  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.45rem 0.95rem;
+  border-radius: 12px;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--text-secondary);
   transition: var(--transition-smooth);
@@ -1422,6 +1448,68 @@ textarea.form-control {
   animation: fadeInUp 0.4s ease both;
 }
 
+/* ── Project Details Popup ── */
+.project-popup-card {
+  max-width: 720px;
+  width: 95%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.project-popup-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  margin-bottom: 1.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.project-popup-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.project-popup-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+}
+
+.project-popup-footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.project-popup-primary-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.project-popup-footer .report-btn,
+.project-popup-footer .figma-btn {
+  margin-left: auto;
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #f59e0b;
+}
+
+.project-popup-footer .report-btn:hover,
+.project-popup-footer .figma-btn:hover {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #ffb938;
+}
+
 /* ═══════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════ */
@@ -1481,29 +1569,75 @@ textarea.form-control {
   }
 
   .nav-toggle {
-    display: block;
+    display: flex;
   }
 
   .nav-links {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 280px;
+    width: 290px;
     height: 100vh;
-    background: rgba(3, 0, 15, 0.97);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-left: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, rgba(10, 8, 28, 0.96) 0%, rgba(3, 0, 15, 0.99) 100%);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border-left: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
     flex-direction: column;
     justify-content: center;
-    padding: 3rem;
-    transition: var(--transition-bounce);
-    z-index: 1000;
-    gap: 2rem;
+    align-items: flex-start;
+    padding: 6rem 2.5rem 3rem;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1500;
+    gap: 1.25rem;
   }
 
   .nav-links.open {
     right: 0;
+  }
+
+  /* List items animation cascade */
+  .nav-links li {
+    width: 100%;
+    list-style: none;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-links.open li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Cascade delay for each list item */
+  .nav-links.open li:nth-child(1) { transition-delay: 0.08s; }
+  .nav-links.open li:nth-child(2) { transition-delay: 0.15s; }
+  .nav-links.open li:nth-child(3) { transition-delay: 0.22s; }
+  .nav-links.open li:nth-child(4) { transition-delay: 0.29s; }
+  .nav-links.open li:nth-child(5) { transition-delay: 0.36s; }
+  .nav-links.open li:nth-child(6) { transition-delay: 0.43s; }
+
+  /* Premium link design in drawer */
+  .nav-links .nav-link {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    width: 100%;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links .nav-link:hover {
+    color: var(--accent-cyan);
+    padding-left: 8px;
+    border-bottom-color: rgba(0, 229, 255, 0.25);
+  }
+
+  .nav-links .nav-link::after {
+    display: none; /* Hide the desktop line animation */
   }
 }
 
@@ -1607,8 +1741,12 @@ textarea.form-control {
 
   /* ── Glass Card ── */
   .glass-card {
-    padding: 1.4rem 1rem;
-    border-radius: 18px;
+    padding: 1.8rem 1.4rem;
+    border-radius: 20px;
+  }
+
+  .skills-grid {
+    gap: 1.25rem;
   }
 
   /* ── Project Cards ── */
@@ -1657,15 +1795,49 @@ textarea.form-control {
     font-size: 1.8rem !important;
   }
 
-  /* Popup footer buttons: stack vertically */
-  .popup-card > div:last-child > div:first-child {
-    flex-direction: column;
-    align-items: stretch;
+  /* Project Details Popup Mobile adjustments */
+  .project-popup-card {
+    padding: 1.5rem 1rem 1rem !important;
+    max-height: 85vh; /* Prevents overflow/getting cut off by phone screen/browser app bars */
   }
 
-  .project-link-btn {
+  .project-popup-body {
+    margin-bottom: 0.75rem;
+  }
+
+  .project-popup-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 0.75rem;
     width: 100%;
+  }
+
+  .project-popup-primary-links {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  /* Make primary link buttons flexible (e.g. Android & iOS stay side-by-side) */
+  .project-popup-primary-links .project-link-btn {
+    flex: 1 1 calc(50% - 0.25rem);
+    min-width: 0;
     justify-content: center;
+    box-sizing: border-box;
+    font-size: 0.76rem;
+    padding: 0.55rem 0.5rem;
+  }
+
+  /* Full width stack for contribution / figma buttons */
+  .project-popup-footer .report-btn,
+  .project-popup-footer .figma-btn {
+    width: 100%;
+    margin-left: 0 !important;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 0.76rem;
+    padding: 0.55rem 0.5rem;
   }
 
   /* ── Timeline ── */
@@ -1687,9 +1859,14 @@ textarea.form-control {
   }
 
   /* ── Skills ── */
+  .skills-list {
+    gap: 0.5rem;
+  }
+
   .skill-tag {
-    font-size: 0.82rem;
-    padding: 0.45rem 0.9rem;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 10px;
   }
 
   /* ── Contact ── */

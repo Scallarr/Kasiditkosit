@@ -8,6 +8,45 @@ import mfufoodguide from '../assets/m.png'
 import mfubookasset from '../assets/mfubookasset.png'
 import mfuroomreservation from '../assets/mfuroomreservation.png'
 import imageclassification from '../assets/imageclassification.png'
+import mfureport from '../assets/Final_Report_MFU_Food_Guide_and_Review_Application.pdf'
+
+/* ── Tech / Tool icon mapping ── */
+const techIcons: Record<string, string> = {
+  'Dart(Flutter)': '🐦',
+  'Flutter': '🐦',
+  'VS code': '💻',
+  'Visual Studio Code': '💻',
+  'Postman': '📮',
+  'Rest Api': '🔌',
+  'RESTful API': '🔌',
+  'UX/UI Designer': '🎨',
+  'Fontend Developtment': '🖥️',
+  'Frontend Development': '🖥️',
+  'Sourcetree': '🌳',
+  'sourcetree': '🌳',
+  'Node.js': '🟢',
+  'Express': '🚂',
+  'Express.js': '🚂',
+  'MySQL': '🐬',
+  'MongoDB': '🍃',
+  'PostgreSQL': '🐘',
+  'React': '⚛️',
+  'React.js': '⚛️',
+  'React Native': '⚛️',
+  'TypeScript': '📘',
+  'JavaScript': '⚡',
+  'HTML5 & CSS': '🌐',
+  'Bootstrap': '🅱️',
+  'Google Maps': '🗺️',
+  'Socket.io': '🔄',
+  'Docker': '🐳',
+  'Git & GitHub': '🐙',
+  'GitHub': '🐙',
+  'Figma': '🎭',
+  'vs code': '💻',
+  'Python': '🐍',
+  'Jupyter Notebook': '📓',
+};
 
 
 type ProjectLink = {
@@ -108,6 +147,7 @@ const renderBoldText = (text: string): React.ReactNode => {
     const url = match[2];
     const isPeaLink = url.includes('peachannel.com') || url.includes('pea.co.th');
 
+    const linkIcon = techIcons[linkText] || '';
     parts.push(
       <a
         key={`link-${match.index}`}
@@ -131,7 +171,7 @@ const renderBoldText = (text: string): React.ReactNode => {
           e.currentTarget.style.borderBottomColor = isPeaLink ? '#ff7a00' : 'var(--accent-cyan)';
         }}
       >
-        {linkText} ↗
+        {linkIcon && `${linkIcon} `}{linkText} ↗
       </a>
     );
     lastIndex = linkRegex.lastIndex;
@@ -172,12 +212,13 @@ const Projects = () => {
           '**Services & Employee Welfare:** Centralized platform for internal news, announcements, employee welfare, and lifestyle features such as PR House and other employee privileges.',
         ],
         techHighlight: [
-          '**Legacy Code Update:** Updated legacy source code to support the latest framework and dependency versions.',
-          '**API Integration:** Upgraded API endpoints and third-party integrations to the latest supported versions.',
-          '**UI/UX Improvement:** Redesigned the interface for a more modern, clean, and intuitive user experience.',
+          '**Legacy Code Update:** Updated legacy [Dart (Flutter)](https://flutter.dev) source code to support the latest framework and dependency versions.',
+          '**API Integration:** Upgraded [REST API](https://restfulapi.net/) endpoints and third-party integrations to the latest supported versions  using [Postman](https://www.postman.com/).',
+          '**UI/UX Improvement:** Redesigned the interface  for a more modern, clean, and intuitive user experience.',
           '**Feature Implementation:** Implemented online leave request and approval functionalities within the internal employee management system.',
           '**Testing:** Added unit testing to improve system reliability and maintain code quality.',
           '**Debugging & Optimization:** Resolved critical system bugs and improved overall system performance and stability.',
+          '**Team Collaboration:** Collaborated with team members using [Sourcetree](https://www.sourcetreeapp.com/) and [GitHub](https://github.com)) for version control, code management, and collaborative development workflows.',
         ],
 
 
@@ -211,13 +252,14 @@ const Projects = () => {
         ],
 
         techHighlight: [
-          '**Legacy Code Update:** Updated the source code to the latest version.',
+          '**Legacy Code Update:** Updated the [Dart (Flutter)](https://flutter.dev) source code to the latest version.',
           '**Security Enhancement:** Improved the registration system by implementing Gmail OTP verification.',
           '**UI/UX Design:** Enhanced the UI/UX for a better user experience.',
-          '**Feature Development:** Developed the Voucher Management feature.',
+          '**Feature Development:** Developed the Voucher Management feature and integration tested via [Postman](https://www.postman.com/).',
           '**System Reliability:** Implemented unit testing to improve system reliability.',
-          '**Debugging:** Fixed bugs and improved overall system stability.',
-          '**Optimization:** Optimized the application to support responsive design on both Android and iOS.',
+          '**Debugging:** Fixed bugs  and improved overall system stability.',
+          '**Optimization:** Optimized the application  to support responsive design on both Android and iOS.',
+          '**Team Collaboration:** Collaborated with team members using [Sourcetree](https://www.sourcetreeapp.com/) and [GitHub](https://github.com)) for version control, code management, and collaborative development workflows.',
         ],
       },
     },
@@ -232,7 +274,7 @@ const Projects = () => {
       image: mfufoodguide,
       github: 'https://github.com/Scallarr/MFU_FOOD_GUIDE_REVIEW',
       figma: 'https://www.figma.com/design/HQAn8H8CkwZOLRRJBbIV3Y/MFU-Food-Guide---Review-Application?node-id=0-1&p=f',
-      report: 'https://demo.com/synctask-report.pdf',
+      report: mfureport,
       details: {
         subtitle: 'แพลตฟอร์มบริหารจัดการงานและโครงการภายในทีมแบบร่วมมือกัน',
         whatWeDid: [
@@ -249,26 +291,38 @@ const Projects = () => {
         ],
 
         techHighlight: [
-          '**Mobile Application Development:** Developed and maintained the [Flutter](https://flutter.dev) mobile application for Android and iOS platforms.',
-          '**UI/UX Design:** Designed and improved the user interface for a more modern and user-friendly experience.',
-          '**Authentication System:** Implemented [Google OAuth](https://developers.google.com/identity/protocols/oauth2) login to ensure that only verified MFU students and staff could access the platform.',
-          '**AI Chatbot Integration:** Integrated [Cohere API](https://cohere.com/) to develop AI-powered chatbot features for answering general questions, application guidance, and user-related information.',
-          '**AI Content Moderation:** Integrated [Google Perspective API](https://perspectiveapi.com/) to automatically detect and moderate inappropriate, toxic, or unsafe reviews, threads, and user-generated messages in real time.',
-          '**Community Features:** Implemented restaurant reviews, leaderboard systems, and community thread functionalities.',
-          '**API Integration:** Developed REST API integration between the Flutter frontend and [Node.js](https://nodejs.org/) backend.',
-          '**Database Management:** Designed and managed [MySQL](https://www.mysql.com/) database structures and system workflows.',
-          '**Cloud Deployment**: Configured and deployed the backend server on [Render](https://render.com) for online hosting and system accessibility.',
-          '**Testing & Optimization:** Performed debugging, testing, and performance optimization to improve system stability.',
-          '**Team Collaboration:** Collaborated with team members on system analysis, feature development, and deployment.'
-        ],
+          '**Cross-Platform Development:** Developed and maintained the [Flutter](https://flutter.dev) mobile application for Android and iOS platforms.',
+
+          '**UI/UX Implementation:** Designed and improved the user interface for a modern and user-friendly experience.',
+
+          '**Secure Authentication:** Implemented [Google OAuth](https://developers.google.com/identity/protocols/oauth2) login to restrict access to verified MFU students and staff.',
+
+          '**AI Chatbot Development:** Integrated [Cohere API](https://cohere.com/) to build AI-powered chatbot functionalities for user assistance and application guidance.',
+
+          '**AI Safety System:** Implemented [Google Perspective API](https://perspectiveapi.com/) for real-time moderation of inappropriate reviews, threads, and user-generated content.',
+
+          '**Community System Development:** Developed restaurant review, leaderboard, and discussion thread systems to improve user engagement.',
+
+          '**Backend & API Integration:** Connected the  frontend with [Node.js](https://nodejs.org/) REST APIs for real-time communication and data handling.',
+
+          '**Database Architecture:** Designed and managed [MySQL](https://www.mysql.com/) database structures, relationships, and system workflows.',
+
+          '**Cloud Deployment:** Configured and deployed backend services on [Render](https://render.com) for cloud hosting and online accessibility.',
+
+          '**Testing & Optimization:** Performed debugging, testing, and performance optimization  to improve stability and responsiveness.',
+
+          '**Team Collaboration:** Collaborated with team members using [Sourcetree](https://www.sourcetreeapp.com/) and [GitHub](https://github.com)) for version control, code management, and collaborative development workflows.',
+
+        ]
       },
+
     },
     {
       id: 4,
       title: 'MFU Movie Assets Application ',
       role: 'Full-stack',
       description:
-        'An internal digital platform for Provincial Electricity Authority (PEA) personnel across Thailand, supporting employee management, online leave requests, travel authorization, and welfare services.',
+        'A smart mobile application designed for MFU students and staff to search, borrow, and manage movies conveniently anytime and anywhere through a modern and user-friendly digital platform.',
       tech: ['Dart(Flutter)', 'VS code', 'Postman', 'Rest Api', 'UX/UI Designer', 'Fontend Developtment'],
       image: mfubookasset,
       ios: pealifeios,
@@ -279,20 +333,30 @@ const Projects = () => {
         subtitle:
           'Personnel management application for Provincial Electricity Authority (PEA) employees across Thailand',
         whatWeDid: [
-          '**Target Audience:** Internal application exclusively designed for PEA personnel across Thailand.',
-          '**Scope:** Personnel management application for Provincial Electricity Authority (PEA) employees across Thailand.',
-          '**Employee Profile:** Internal workforce profile and information management system.',
-          '**Online Leave Request:** Supports real-time approval status tracking and submissions.',
-          '**Travel Authorization:** System for off-site work and travel request approvals.',
-          '**Document Approval:** Internal workflow and document approval management system.',
-          '**Employee Welfare:** Centralized portal for welfare, benefits, announcements, and services.',
+          '**Movie Borrowing System:** Search, borrow, and manage movie rentals through the mobile application.',
+          '**Approval Workflow:** Approver system for approving movie borrowing requests.',
+          '**Return Verification:** Administrative system for verifying and managing movie returns.',
+          '**Admin Dashboard:** Dashboard for monitoring overall application activities and movie management.',
+          '**User Authentication:** Secure login system for authorized MFU users.',
+          '**Responsive UI:** Modern and user-friendly interface optimized for mobile devices.',
         ],
         techHighlight: [
-          '**Legacy Code Update:** Updated legacy source code to support the latest framework and dependency versions.',
-          '**UI/UX Improvement:** Redesigned the interface for a more modern, clean, and intuitive user experience.',
-          '**Feature Implementation:** Implemented new features such as online leave request functionality.',
-          '**Debugging & Optimization:** Resolved critical system bugs and improved performance issues.',
-          '**API Integration:** Upgraded API endpoints and third-party integrations to the latest supported versions.',
+          '**Cross-Platform Development:** Developed and maintained the movie borrowing mobile application using [Dart (Flutter)](https://flutter.dev) for Android and iOS platforms.',
+
+          '**UI/UX Implementation:** Designed and improved the user interface  for a modern and user-friendly experience.',
+
+          '**Secure Authentication:** Implemented secure login and user authentication for authorized MFU users.',
+
+          '**Approval System Development:** Developed the workflow system for approving movie borrowing requests.',
+
+          '**Admin System Implementation:** Developed administrative features for verifying movie returns and monitoring application activities.',
+
+          '**Backend Development & API Integration:** Developed the backend system using [Node.js](https://www.nodejs.org/) and connected the Flutter frontend with [REST APIs](https://restfulapi.net/) for real-time data communication and management.',
+
+          '**Database Management:** Designed and managed the [MySQL](https://www.mysql.com/) database structure using [MySQL Workbench](https://www.mysql.com/products/workbench/) for efficient data management and system workflows.',
+
+          '**Testing & Optimization:** Performed debugging, testing, and performance optimization to improve system stability and responsiveness.',
+          '**Team Collaboration:** Collaborated with team members using [Sourcetree](https://www.sourcetreeapp.com/) and [GitHub](https://github.com)) for version control, code management, and collaborative development workflows.',
         ],
       },
     },
@@ -477,7 +541,7 @@ const Projects = () => {
               <div className="project-tech">
                 {project.tech.map((tag, idx) => (
                   <span key={idx} className="tech-badge">
-                    {tag}
+                    {techIcons[tag] && <span style={{ marginRight: '0.3rem' }}>{techIcons[tag]}</span>}{tag}
                   </span>
                 ))}
               </div>
@@ -506,8 +570,7 @@ const Projects = () => {
         ReactDOM.createPortal(
           <div className="popup-overlay" onClick={closeDetails}>
             <div
-              className="popup-card"
-              style={{ maxWidth: '720px', width: '95%', textAlign: 'left' }}
+              className="popup-card project-popup-card"
               onClick={(e) => e.stopPropagation()}
             >
               <button className="popup-close" onClick={closeDetails}>
@@ -527,14 +590,7 @@ const Projects = () => {
                 {activeProject.details.subtitle}
               </p>
 
-              <div
-                style={{
-                  maxHeight: '55vh',
-                  overflowY: 'auto',
-                  paddingRight: '0.5rem',
-                  marginBottom: '1.25rem',
-                }}
-              >
+              <div className="project-popup-body">
                 <div style={{ marginBottom: '1.25rem' }}>
                   <h4
                     style={{
@@ -619,17 +675,8 @@ const Projects = () => {
                 </div>
               </div>
 
-              <div
-                style={{
-                  paddingTop: '1rem',
-                  borderTop: '1px solid rgba(255,255,255,0.1)',
-                  display: 'flex',
-                  gap: '0.75rem',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                }}
-              >
-                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <div className="project-popup-footer">
+                <div className="project-popup-primary-links">
                   {getPrimaryLinks(activeProject).map((link) => (
                     <a
                       key={link.label}
@@ -643,7 +690,6 @@ const Projects = () => {
                       </span>
                     </a>
                   ))}
-
                 </div>
 
                 {activeProject.report && (
@@ -651,13 +697,7 @@ const Projects = () => {
                     href={activeProject.report}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="project-link-btn"
-                    style={{
-                      marginLeft: 'auto',
-                      background: 'rgba(245, 158, 11, 0.08)',
-                      borderColor: 'rgba(245, 158, 11, 0.35)',
-                      color: '#f59e0b',
-                    }}
+                    className="project-link-btn report-btn"
                   >
                     <span>
                       🎨 My Contribution
@@ -669,13 +709,7 @@ const Projects = () => {
                     href={activeProject.figma}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="project-link-btn"
-                    style={{
-                      marginLeft: 'auto',
-                      background: 'rgba(245, 158, 11, 0.08)',
-                      borderColor: 'rgba(245, 158, 11, 0.35)',
-                      color: '#f59e0b',
-                    }}
+                    className="project-link-btn figma-btn"
                   >
                     <span>
                       🎨 Figma

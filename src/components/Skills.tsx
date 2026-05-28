@@ -121,7 +121,7 @@ const Skills = () => {
                   onClick={() => openPopup(skill)}
                   title={`Click to learn more about ${skill}`}
                 >
-                  {skill}
+                  {skillDetails[skill]?.icon && <span style={{ marginRight: '0.3rem' }}>{skillDetails[skill].icon}</span>}{skill}
                 </span>
               ))}
             </div>
