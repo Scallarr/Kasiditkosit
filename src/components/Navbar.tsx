@@ -97,6 +97,8 @@ const Navbar = () => {
               className="nav-link"
               target="_blank"
               rel="noopener noreferrer"
+
+
               onClick={closeMenu}
             >
               {t.nav.resume}
@@ -106,7 +108,12 @@ const Navbar = () => {
           <li className="lang-switcher-container">
             <button
               className="lang-toggle-btn"
-              onClick={toggleLanguage}
+
+              onClick={() => {
+                toggleLanguage();
+                setIsMenuOpen(false);
+              }}
+
               aria-label={`Switch language to ${language === 'en' ? 'Thai' : 'English'
                 }`}
               title={`Switch language to ${language === 'en' ? 'Thai' : 'English'
