@@ -1,3 +1,4 @@
+// Experience.tsx
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
@@ -75,11 +76,14 @@ const Experience = () => {
   return (
     <section id="experience" className="section container animate-fade-in delay-3">
       <h2 className="section-title">{t.experience.title}</h2>
+
       <div className="timeline-wrapper">
         <div className="timeline-line"></div>
-        {experiences.map(exp => (
+
+        {experiences.map((exp) => (
           <div key={exp.id} className="timeline-item">
             <div className="timeline-dot"></div>
+
             <div className="glass-card timeline-card">
               <div className="timeline-header">
                 <h3 className="timeline-title timeline-title-with-logo">
@@ -93,14 +97,18 @@ const Experience = () => {
                       }}
                     />
                   </span>
+
                   <span className="timeline-title-text">{exp.title}</span>
                 </h3>
+
                 <span className="timeline-date">{exp.date}</span>
               </div>
+
               <div className="timeline-company-row">
                 <span className="timeline-company-icon">
                   <LocationIcon />
                 </span>
+
                 {exp.mapUrl ? (
                   <a
                     href={exp.mapUrl}
@@ -114,10 +122,16 @@ const Experience = () => {
                   <span className="timeline-company">{exp.company}</span>
                 )}
               </div>
+
               <p className="timeline-desc">{exp.description}</p>
+
               {exp.image && (
                 <figure className="timeline-proof">
-                  <img src={exp.image} alt={exp.imageAlt || exp.title} className="timeline-proof-image" />
+                  <img
+                    src={exp.image}
+                    alt={exp.imageAlt || exp.title}
+                    className="timeline-proof-image"
+                  />
                   <figcaption className="timeline-proof-caption">
                     {exp.imageCaption || t.experience.evidence}
                   </figcaption>
@@ -132,4 +146,3 @@ const Experience = () => {
 };
 
 export default Experience;
-
