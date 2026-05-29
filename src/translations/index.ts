@@ -9,6 +9,7 @@ export const translations = {
       skills: "Skills",
       experience: "Experience",
       projects: "Projects",
+      resume: "Resume",
       contact: "Contact"
     },
     // Header (Hero)
@@ -387,13 +388,14 @@ export const translations = {
   th: {
     // Navbar
     nav: {
-      logo_first: "KASIDIT",
-      logo_last: "KOSIT",
+      logo_first: "กษิดิศ",
+      logo_last: "โกสิทธิ์",
       home: "หน้าหลัก",
       about: "เกี่ยวกับฉัน",
       skills: "ทักษะ",
       experience: "ประสบการณ์",
       projects: "ผลงาน",
+      resume: "เรซูเม่",
       contact: "ติดต่อ"
     },
     // Header (Hero)

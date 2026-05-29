@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
-
+import resume from "../assets/resume.pdf";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +18,7 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -50,32 +51,79 @@ const Navbar = () => {
 
         <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <li>
-            <a href="#" className="nav-link" onClick={closeMenu}>{t.nav.home}</a>
+            <a href="#" className="nav-link" onClick={closeMenu}>
+              {t.nav.home}
+            </a>
+          </li>
+
+          <li>
+            <a href="#about" className="nav-link" onClick={closeMenu}>
+              {t.nav.about}
+            </a>
           </li>
           <li>
-            <a href="#about" className="nav-link" onClick={closeMenu}>{t.nav.about}</a>
+            <a href="#skills" className="nav-link" onClick={closeMenu}>
+              {t.nav.skills}
+            </a>
           </li>
           <li>
-            <a href="#skills" className="nav-link" onClick={closeMenu}>{t.nav.skills}</a>
+            <a href="#projects" className="nav-link" onClick={closeMenu}>
+              {t.nav.projects}
+            </a>
           </li>
           <li>
-            <a href="#experience" className="nav-link" onClick={closeMenu}>{t.nav.experience}</a>
+            <a href="#experience" className="nav-link" onClick={closeMenu}>
+              {t.nav.experience}
+            </a>
           </li>
+
+
+
+
+
+
           <li>
-            <a href="#projects" className="nav-link" onClick={closeMenu}>{t.nav.projects}</a>
+            <a href="#contact" className="nav-link" onClick={closeMenu}>
+              {t.nav.contact}
+            </a>
           </li>
+
+
+
+          {/* Resume Button */}
           <li>
-            <a href="#contact" className="nav-link" onClick={closeMenu}>{t.nav.contact}</a>
+            <a
+              href={resume}
+              className="nav-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+            >
+              {t.nav.resume}
+            </a>
           </li>
+
           <li className="lang-switcher-container">
             <button
               className="lang-toggle-btn"
               onClick={toggleLanguage}
-              aria-label={`Switch language to ${language === 'en' ? 'Thai' : 'English'}`}
-              title={`Switch language to ${language === 'en' ? 'Thai' : 'English'}`}
+              aria-label={`Switch language to ${language === 'en' ? 'Thai' : 'English'
+                }`}
+              title={`Switch language to ${language === 'en' ? 'Thai' : 'English'
+                }`}
             >
-              <span className={`lang-option ${language === 'en' ? 'active' : ''}`}>EN</span>
-              <span className={`lang-option ${language === 'th' ? 'active' : ''}`}>TH</span>
+              <span
+                className={`lang-option ${language === 'en' ? 'active' : ''
+                  }`}
+              >
+                EN
+              </span>
+              <span
+                className={`lang-option ${language === 'th' ? 'active' : ''
+                  }`}
+              >
+                TH
+              </span>
             </button>
           </li>
         </ul>
@@ -85,4 +133,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
