@@ -44,7 +44,7 @@ function App() {
           fontSize: '0.95rem'
         }}
       >
-        <p style={{ fontWeight: 500, color: '#ffffff' }}>© {new Date().getFullYear()} Kasidit Pimpimai. All rights reserved.</p>
+        <p style={{ fontWeight: 500, color: '#ffffff' }}>© {new Date().getFullYear()} Kasidit Kosit. All rights reserved.</p>
         <p style={{ marginTop: '0.6rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
           Designed & Crafted with React, TypeScript & Premium Vanilla CSS
         </p>

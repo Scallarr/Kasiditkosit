@@ -39,7 +39,72 @@ type Project = {
   };
 };
 
-const renderHighlightedDescription = (text: string) => { const mappings = [{ target: 'Provincial Electricity Authority (PEA)', href: 'https://www.pea.co.th', color: '#ff7a00', hover: '#ff9d42', }, { target: 'Mae Fah Luang University (MFU)', href: 'https://www.mfu.ac.th', color: '#00e5ff', hover: '#67e8f9', },]; let result: React.ReactNode[] = [text]; mappings.forEach(({ target, href, color, hover }) => { result = result.flatMap((item) => { if (typeof item !== 'string' || !item.includes(target)) { return [item]; } const parts = item.split(target); return parts.flatMap((part, index) => { if (index === parts.length - 1) { return [part]; } return [part, <a key={`${target}-${index}`} href={href} target="_blank" rel="noopener noreferrer" style={{ color, fontWeight: 600, textDecoration: 'none', borderBottom: `1px dashed ${color}`, transition: 'var(--transition-fast)', cursor: 'pointer', }} onMouseEnter={(e) => { e.currentTarget.style.color = hover; e.currentTarget.style.borderBottomColor = hover; }} onMouseLeave={(e) => { e.currentTarget.style.color = color; e.currentTarget.style.borderBottomColor = color; }} > {target} </a>,]; }); }); }); return <>{result}</>; };
+const renderHighlightedDescription = (text: string) => {
+  const mappings = [
+    {
+      target: 'Provincial Electricity Authority (PEA)',
+      href: 'https://www.pea.co.th',
+      color: '#ff7a00',
+      hover: '#ff9d42',
+    },
+    {
+      target: 'Mae Fah Luang University (MFU)',
+      href: 'https://www.mfu.ac.th',
+      color: '#00e5ff',
+      hover: '#67e8f9',
+    },
+  ];
+
+  let result: React.ReactNode[] = [text];
+
+  mappings.forEach(({ target, href, color, hover }) => {
+    const next: React.ReactNode[] = [];
+
+    result.forEach((item) => {
+      if (typeof item !== 'string' || !item.includes(target)) {
+        next.push(item);
+        return;
+      }
+
+      const parts = item.split(target);
+      parts.forEach((part, index) => {
+        if (part) next.push(part);
+        if (index < parts.length - 1) {
+          next.push(
+            <a
+              key={`${target}-${index}`}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color,
+                fontWeight: 600,
+                textDecoration: 'none',
+                borderBottom: `1px dashed ${color}`,
+                transition: 'var(--transition-fast)',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = hover;
+                e.currentTarget.style.borderBottomColor = hover;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = color;
+                e.currentTarget.style.borderBottomColor = color;
+              }}
+            >
+              {target}
+            </a>
+          );
+        }
+      });
+    });
+
+    result = next;
+  });
+
+  return <>{result}</>;
+};
 const renderBoldText = (text: string): React.ReactNode => {
   const parts: React.ReactNode[] = [];
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -303,9 +368,7 @@ const Projects = () => {
       ],
 
       image: mfubookasset,
-      ios: pealifeios,
-      android: 'https://play.google.com/store/apps/details?id=th.co.pea.peaeasylife&hl=en-SG',
-      report: peaLifeReport,
+      github: "https://github.com/Scallarr/Mobile_App_Project",
       location: 'MFU',
       details: {
         subtitle:
@@ -361,6 +424,7 @@ const Projects = () => {
         '🌳 Sourcetree',
 
       ],
+      github: "https://github.com/Scallarr/WebappProject",
 
       image: mfuroomreservation,
       location: 'MFU',
@@ -401,29 +465,47 @@ const Projects = () => {
       role: 'AI-Machine learning',
       location: 'MFU',
       description:
-        'A collaborative workspace and team management application simulating interactive Kanban boards, task delegation, and progress milestones.',
+        'An AI-powered application that automatically recognizes and classifies objects from uploaded images, providing real-time prediction results with confidence scores.',
       tech: [
-        '🧠 Machine Learning',
         '🐍 Python',
         '🎈 Streamlit',
         '📚 TensorFlow',
-        '🖼️ OpenCV',
-        '🔥 CNN',
-
+        '📱 MobileNetV2',
+        '🔢 NumPy',
+        '🖼️ Pillow',
       ],
       image: imageclassification,
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      report: 'https://demo.com/synctask-report.pdf',
+      github: 'https://github.com/Scallarr/image_classifier_app',
+
+
       details: {
-        subtitle: 'AI-powered image classification website for image recognition and machine learning prediction through an interactive web platform',
+        subtitle: '',
+        // subtitle: 'An AI-powered application that automatically recognizes and classifies objects from uploaded images, providing real-time prediction results with confidence scores.',
         whatWeDid: [
-          '**Kanban Board:** พัฒนากระดานงานแบบ Kanban Board',
-          '**Real-time Updates:** ทำระบบแจ้งเตือนและอัปเดตงานแบบ Real-time',
-          '**Database Design:** ออกแบบฐานข้อมูลสำหรับบันทึกประวัติงาน',
-          '**Dashboard:** สร้างแดชบอร์ดติดตามความคืบหน้าของทีม',
-        ],
-        techHighlight: 'React.js, Node.js, Express, Socket.io, PostgreSQL',
+          '**Image Upload System:** Supported image uploads in JPG, JPEG, and PNG formats.',
+
+          '**Object Recognition Engine:** Implemented AI-powered object detection and classification.',
+
+          '**Real-Time Prediction:** Generated instant classification results from uploaded images.',
+
+          '**Confidence Ranking:** Displayed Top-3 predictions with confidence scores.',
+
+
+          '**User Interface Development:** Designed an intuitive and user-friendly application interface.'
+        ]
+        ,
+        techHighlight: ['**Web Application Development:** Developed the image classification web application.',
+
+          '**AI Model Integration:** Integrated the [MobileNetV2](https://arxiv.org/abs/1801.04368) deep learning model for object recognition.',
+
+          '**Prediction Pipeline Development:** Implemented image preprocessing and prediction workflows.',
+
+          '**Result Visualization:** Displayed Top-3 classification results with confidence percentages.',
+
+          '**User Interface Design:** Created a simple and intuitive interface for image uploads and predictions.',
+
+          '**Environment & Dependency Management:** Managed application setup and required libraries.',
+        ]
       },
     },
     {
@@ -434,18 +516,16 @@ const Projects = () => {
       description:
         'A web-based application that automatically generates image captions using deep learning and computer vision. Users can upload images or use image URLs, and the system generates descriptive captions in real time through a simple and user-friendly interface.',
       tech: [
-        '🧠 Machine Learning',
         '🐍 Python',
-        '🎈 Streamlit',
+        '🧠 Deep Learning',
         '📚 TensorFlow',
-        '🖼️ OpenCV',
-        '🔥 CNN',
-
+        '🔢 NumPy',
+        '🖼️ Computer Vision',
+        '📝 Image Captioning'
       ],
       image: imagecaptioning,
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      report: 'https://demo.com/synctask-report.pdf',
+      github: 'https://github.com/Scallarr/Image_captioning',
+
       details: {
         subtitle: 'AI-powered image classification website for image recognition and machine learning prediction through an interactive web platform',
         whatWeDid: [
@@ -475,7 +555,7 @@ const Projects = () => {
 
           '**Image Upload & URL Processing:** Built support for local image uploads and external image URL loading with real-time preview functionality. ',
 
-          '**Frontend-Backend Communication:** Connected the MATLAB frontend with the Python captioning server using HTTP-based API communication workflows. ',
+          '**Frontend-Backend Communication:** Connected the [MATLAB](https://www.mathworks.com/products/matlab.html) frontend with the Python captioning server using HTTP-based API communication workflows. ',
 
           '**Real-Time Caption Generation:** Implemented asynchronous caption generation flow with loading states and dynamic caption updates for improved user experience.',
 

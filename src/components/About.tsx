@@ -54,16 +54,33 @@ const About = () => {
       <h2 className="section-title">About Me</h2>
       <div className="glass-card about-grid">
         <div className="about-text">
-          <p style={{ fontSize: '1.25rem', fontWeight: 600, color: '#ffffff', marginBottom: '1.25rem' }}>
-            I believe that great software is not just about writing correct code, but about delivering exceptional user experiences and solving real problems.
+          <p
+            style={{
+              fontSize: '1.25rem',
+              fontWeight: 600,
+              color: '#ffffff',
+              marginBottom: '1.25rem',
+            }}
+          >
+            I believe that great software is not just about writing code, but about
+            solving real problems and delivering exceptional user experiences.
           </p>
+
           <p>
-            Hello! I am a software developer with a strong passion for crafting stable web applications and highly intuitive user interfaces.
-            My coding journey started with a deep curiosity to understand how web technologies function under the hood, and quickly grew into a professional pursuit of engineered solutions for real‑world business challenges.
+            Hello! I am a passionate <span className="hero-keyword">Full Stack Developer</span>{' '}
+            specializing in modern <span className="hero-keyword">Web Applications</span>{' '}
+            and <span className="hero-keyword">Mobile Applications</span>. I enjoy turning
+            ideas into digital products by combining intuitive user interfaces with
+            scalable and reliable systems behind the scenes.
           </p>
+
           <p style={{ margin: 0 }}>
-            My goal is to collaborate with visionary teams to build scalable software solutions that improve people's everyday lives.
-            Outside of programming, I constantly stay updated with modern design aesthetics and love experimenting with new frontend creative concepts.
+            My expertise includes developing <span className="hero-keyword">Frontend Experiences</span>,
+            building scalable <span className="hero-keyword">Backend Systems</span>,
+            designing efficient <span className="hero-keyword">APIs</span>, and managing
+            robust <span className="hero-keyword">Databases</span>. I am passionate about
+            creating impactful software solutions while continuously learning new
+            technologies and modern development practices.
           </p>
         </div>
 

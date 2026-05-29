@@ -33,7 +33,7 @@ const Navbar = () => {
         <a href="#" className="nav-logo" onClick={closeMenu}>
           <span className="logo-first">KASIDIT</span>
           <span className="logo-last">KOSIT</span>
-          <span className="badge-dot" style={{ position: 'relative', top: '0.2rem', left: '-0.1rem' }}></span>
+          <span className="nav-logo-dot" aria-hidden="true"></span>
         </a>
 
         <button

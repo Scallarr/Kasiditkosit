@@ -10,31 +10,30 @@ const Header = () => {
             <span className="badge-dot"></span>
             Available for Work
           </div>
-          <h1>
-            Hi, I'm{' '}
-            <span
-              style={{
-                background: 'var(--gradient-accent)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                fontWeight: 800
-              }}
-            >
-              Kasidit Kosit
-            </span>
+          <h1 className="hero-title">
+            Hello, I'm{' '}
+            <span className="hero-name-gradient">Kasidit Kosit</span>
           </h1>
-          <div className="hero-subtitle">Software Developer & Frontend Specialist</div>
+
+          <div className="hero-subtitle-row">
+            <span className="hero-subtitle">Full Stack Developer</span>
+            <span className="hero-subtitle-dot">•</span>
+            <span className="hero-subtitle-focus">Front-end + Back-end</span>
+          </div>
+
           <p className="hero-description">
-            I am a passionate software developer dedicated to building beautiful, state-of-the-art web applications.
-            I focus on writing clean, maintainable code, optimizing performance, and crafting pixel-perfect,
-            intuitive user experiences.
+            A passionate Full Stack Developer building modern{' '}
+            <span className="hero-keyword">Web </span> and{' '}
+            <span className="hero-keyword">Mobile Applications</span> with intuitive user experiences, scalable{' '}
+            <span className="hero-keyword">Backend Systems</span>, and efficient{' '}
+            <span className="hero-keyword">Databases</span>.
           </p>
           <div className="btn-group">
             <a href="#contact" className="btn-primary">
-              Contact Me 🚀
+              Contact Me
             </a>
             <a href="#about" className="btn-secondary">
-              About Me 🧑‍💻
+              About Me
             </a>
           </div>
         </div>

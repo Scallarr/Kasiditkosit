@@ -15,6 +15,8 @@ const skillDetails: Record<string, { icon: string; desc: string }> = {
   'Web Application Development': { icon: '🖥️', desc: 'End-to-end web application development covering frontend UI, REST API integration, authentication, and cloud deployment.' },
   'Android': { icon: '🤖', desc: 'Android application development using Kotlin/Java and Flutter, published to Google Play Store.' },
   'ios': { icon: '🍎', desc: 'iOS application development via Flutter, supporting iPhone and iPad with native-feel UI and platform APIs.' },
+  'Front-end Development': { icon: '🖥️', desc: 'Building responsive, user-focused interfaces with modern frontend technologies including React, TypeScript, HTML/CSS, and Flutter UI workflows.' },
+  'Back-end Development': { icon: '🗄️', desc: 'Developing backend services, REST APIs, authentication flows, and database integrations using Node.js, Express, and SQL/NoSQL systems.' },
 
   // Backend & DB
   'Node.js': { icon: '🟢', desc: 'Server-side JavaScript runtime — building high-performance, event-driven REST APIs and microservices.' },
@@ -31,14 +33,12 @@ const skillDetails: Record<string, { icon: string; desc: string }> = {
   'Google OAuth Authentication': { icon: '🔑', desc: 'Social login integration using Google OAuth 2.0 — Passport.js strategy, session handling, and secure token exchange.' },
 
   // AI & Data
-  'AI Chatbot Development': { icon: '🤖', desc: 'Building conversational AI chatbots with NLP APIs (OpenAI, Gemini) — intent detection, context management, and fallback handling.' },
-  'Profanity Detection Systems': { icon: '🛡️', desc: 'Text moderation pipelines that classify and filter harmful content using rule-based and ML approaches.' },
-  'Machine Learning Basics': { icon: '🧠', desc: 'Foundational ML concepts — supervised/unsupervised learning, model evaluation, and feature engineering using scikit-learn.' },
-  'Data Cleansing': { icon: '🧹', desc: 'Identifying and correcting dirty data — handling nulls, duplicates, inconsistent formats, and outliers with pandas.' },
-  'Data Processing': { icon: '⚙️', desc: 'ETL pipelines and batch/stream data transformations using Python scripts and JSON/CSV manipulation.' },
-  'Prompt Engineering': { icon: '✍️', desc: 'Crafting effective prompts for LLMs — zero-shot, few-shot, chain-of-thought techniques for reliable AI output.' },
-  'Text Classification': { icon: '📊', desc: 'Categorising text data using ML classifiers and pre-trained transformer models for sentiment analysis and topic detection.' },
-  'Image-to-Text Conversion': { icon: '📸', desc: 'Extracting text from images using OCR (Tesseract, Google Vision API) and post-processing the results for structured data.' },
+  'AI Chatbot Development with Cohere LLM': { icon: '🤖', desc: 'Built AI assistants using Cohere LLM models (Atlas/Nexus workflows) for recommendation and context-aware Q&A experiences.' },
+  'Profanity Detection System with Google Perspective API': { icon: '🛡️', desc: 'Implemented toxicity filtering with Google Perspective API model scoring to moderate user-generated text content.' },
+  'Machine Learning Basics': { icon: '🧠', desc: 'Applied ML fundamentals with TensorFlow/Keras CNN workflows for image model training, validation, and evaluation.' },
+  'Data Processing': { icon: '⚙️', desc: 'Processed image/text data pipelines using Python scripts with OpenCV and Transformers-compatible input formatting.' },
+  'Text Classification': { icon: '📊', desc: 'Used Perspective API toxicity classification scores for text risk labeling and moderation decisions.' },
+  'Image-to-Text Conversion with Hugging Face': { icon: '📸', desc: 'Generated captions from images using BLIP (Salesforce/blip-image-captioning-base) via Hugging Face Transformers.' },
   'REST API Integration': { icon: '🔗', desc: 'Consuming third-party REST APIs — authentication flows, pagination, rate limiting, error handling, and response mapping.' },
 
   // Tools
@@ -57,29 +57,84 @@ const skillDetails: Record<string, { icon: string; desc: string }> = {
 
 interface SkillPopup { skill: string }
 
-const skillCategories = [
+type SkillSubgroup = {
+  title: string;
+  skills: string[];
+};
+
+type SkillCategory = {
+  title: string;
+  icon: string;
+  skills?: string[];
+  subgroups?: SkillSubgroup[];
+};
+
+
+const skillCategories: SkillCategory[] = [
   {
-    title: 'Frontend Development', icon: '🎨',
-    skills: ['Dart(Flutter)', 'HTML5 & CSS', 'JavaScript,TypeScript', 'React', 'Bootstrap',
-      'UX/UI Designer', 'Responsive Design', 'Mobile App Development',
-      'Web Application Development', 'Android', 'ios'],
+    title: 'Fullstack Development',
+    icon: '🧩',
+    subgroups: [
+      {
+        title: 'Front-end Development',
+        skills: [
+          'Dart(Flutter)',
+          'HTML5 & CSS',
+          'React',
+          'JavaScript,TypeScript',
+          'UX/UI Designer',
+
+        ],
+      },
+      {
+        title: 'Back-end Development',
+        skills: [
+          'Node.js',
+          'RESTful API',
+          'MySQL',
+          'Cloudinary',
+          'JWT Authentication',
+          'Render Server',
+          'Local Database',
+          'Google OAuth Authentication',
+          'Database Management',
+
+
+
+        ],
+      },
+    ],
   },
   {
-    title: 'Backend & Database', icon: '⚙️',
-    skills: ['Node.js', 'Express.js', 'RESTful API', 'MongoDB', 'MySQL',
-      'JWT Authentication', 'Node mailer', 'Render Server', 'Local Database',
-      'Cloudinary', 'Database Management', 'Google OAuth Authentication'],
+    title: 'AI & Data Processing',
+    icon: '🤖',
+    skills: [
+      'AI Chatbot Development with Cohere LLM',
+
+      'Profanity Detection System with Google Perspective API',
+      'Machine Learning Basics',
+
+      'Text Classification',
+      'Image-to-Text Conversion with Hugging Face',
+
+    ],
   },
   {
-    title: 'AI & Data Processing', icon: '🤖',
-    skills: ['AI Chatbot Development', 'Profanity Detection Systems', 'Machine Learning Basics',
-      'Data Cleansing', 'Data Processing', 'Prompt Engineering',
-      'Text Classification', 'Image-to-Text Conversion', 'REST API Integration'],
-  },
-  {
-    title: 'Tools', icon: '🛠️',
-    skills: ['Git & GitHub', 'Source Tree', 'Figma (UI/UX)', 'Postman', 'Docker (Basic)',
-      'Visual Studio Code', 'XAMPP', 'Vercel', 'Netlify', 'MySQL Workbench', 'Jupyter Notebook'],
+    title: 'Tools',
+    icon: '🛠️',
+    skills: [
+      'Git & GitHub',
+      'Source Tree',
+      'Figma (UI/UX)',
+      'Postman',
+      'Docker (Basic)',
+      'Visual Studio Code',
+      'XAMPP',
+      'Vercel',
+      'MatLab',
+      'MySQL Workbench',
+      'Jupyter Notebook',
+    ],
   },
 ];
 
@@ -108,23 +163,63 @@ const Skills = () => {
 
       <div className="skills-grid">
         {skillCategories.map((category, index) => (
-          <div key={index} className={`glass-card animate-fade-in delay-${index + 1}`}>
+          <div
+            key={index}
+            className={`glass-card animate-fade-in delay-${index + 1} ${category.title === 'Fullstack Development' ? 'skills-card-fullstack' : ''}`}
+          >
             <h3 className="skills-category-title">
               <span className="skills-category-icon">{category.icon}</span>
               {category.title}
             </h3>
-            <div className="skills-list">
-              {category.skills.map((skill, sIdx) => (
-                <span
-                  key={sIdx}
-                  className="skill-tag"
-                  onClick={() => openPopup(skill)}
-                  title={`Click to learn more about ${skill}`}
-                >
-                  {skillDetails[skill]?.icon && <span style={{ marginRight: '0.3rem' }}>{skillDetails[skill].icon}</span>}{skill}
-                </span>
-              ))}
-            </div>
+            {category.title === 'Fullstack Development' && (
+              <div className="skills-fullstack-note" aria-label="fullstack platforms">
+                <span className="skills-platform-keyword">Web Development</span>
+                <span className="skills-platform-keyword">Mobile App Development</span>
+              </div>
+            )}
+
+            {category.subgroups ? (
+              <div className="skills-subgroups skills-subgroups-inline">
+                {category.subgroups.map((subgroup, subIdx) => (
+                  <div
+                    key={subIdx}
+                    className={`skills-subgroup ${subgroup.title.includes('Front-end') ? 'skills-subgroup-front' : 'skills-subgroup-back'}`}
+                  >
+                    <div className="skills-subgroup-head">
+                      <h4 className="skills-subgroup-title">{subgroup.title}</h4>
+                      {/* <span className="skills-subgroup-count">{subgroup.skills.length} Skills</span> */}
+                    </div>
+                    <div className="skills-list">
+                      {subgroup.skills.map((skill, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="skill-tag"
+                          onClick={() => openPopup(skill)}
+                          title={`Click to learn more about ${skill}`}
+                        >
+                          {skillDetails[skill]?.icon && <span style={{ marginRight: '0.3rem' }}>{skillDetails[skill].icon}</span>}
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="skills-list">
+                {category.skills?.map((skill, sIdx) => (
+                  <span
+                    key={sIdx}
+                    className="skill-tag"
+                    onClick={() => openPopup(skill)}
+                    title={`Click to learn more about ${skill}`}
+                  >
+                    {skillDetails[skill]?.icon && <span style={{ marginRight: '0.3rem' }}>{skillDetails[skill].icon}</span>}
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
