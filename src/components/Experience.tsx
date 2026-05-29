@@ -1,4 +1,7 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
+
 import peaInternshipProof from '../assets/pea_internship_proof.png';
 import peaLogoBig from '../assets/pea_logo_big.png';
 import mfulogo from '../assets/MFU.jpg';
@@ -26,55 +29,52 @@ const LocationIcon = () => (
   </svg>
 );
 
+const experienceBases = [
+  {
+    id: 1,
+    placeLogo: peaLogoBig,
+    placeLogoAlt: 'PEA logo',
+    image: peaInternshipProof,
+    imageAlt: 'Internship meeting at Provincial Electricity Authority (PEA) Head Office',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=PEA+Head+Office+Bangkok+Thailand',
+  },
+  {
+    id: 4,
+    placeLogo: mfulogo,
+    placeLogoAlt: 'Mae Fah Luang University logo',
+    image: MFUPLACE,
+    imageAlt: 'Mae Fah Luang University place',
+    mapUrl: 'https://maps.google.com/?q=Mae+Fah+Luang+University',
+  },
+  {
+    id: 5,
+    placeLogo: crulogo,
+    placeLogoAlt: 'Chonradsadornumrung School logo',
+    image: cruplace,
+    imageAlt: 'Chonradsadornumrung School campus',
+    mapUrl: 'https://maps.google.com/?q=Chonradsadornumrung+School',
+  },
+];
+
 const Experience = () => {
-  const experiences = [
-    {
-      id: 1,
-      title: 'Internship - Provincial Electricity Authority (PEA)',
-      company: 'PEA Head Office, Bangkok, Thailand',
-      placeLogo: peaLogoBig,
-      placeLogoAlt: 'PEA logo',
-      date: 'Jan 2026 - May 2026',
-      description:
-        'Refactored legacy mobile application code for successful App Store deployment, updated API endpoints for data integration, implemented new features, and performed debugging/testing to improve stability and performance.',
-      image: peaInternshipProof,
-      imageAlt: 'Internship meeting at Provincial Electricity Authority (PEA) Head Office',
-      imageCaption: 'Internship activity at PEA Head Office, Bangkok.',
-      mapUrl: 'https://www.google.com/maps/search/?api=1&query=PEA+Head+Office+Bangkok+Thailand',
-    },
+  const { language } = useLanguage();
+  const t = translations[language];
 
-
-    {
-      id: 4,
-      title: "Bachelor's of Engineering",
-      company: 'Mae Fah Luang University, Chiang Rai, Thailand',
-      placeLogo: mfulogo,
-      placeLogoAlt: 'Mae Fah Luang University logo',
-      image: MFUPLACE,
-      date: 'Aug 2022 - May 2026',
-      description: 'Major in Computer Engineering, GPAX 3.87, with strong foundation in software engineering and system development.',
-      imageAlt: 'Mae Fah Luang University place',
-      imageCaption: 'Mae Fah Luang University campus, Chiang Rai.',
-      mapUrl: 'https://maps.google.com/?q=Mae+Fah+Luang+University',
-    },
-    {
-      id: 5,
-      title: 'High School Diploma',
-      company: 'Chonradsadornumrung School, Chonburi, Thailand',
-      placeLogo: crulogo,
-      placeLogoAlt: 'Chonradsadornumrung School logo',
-      date: 'Jan 2019 - Feb 2022',
-      image: cruplace,
-      description: 'Completed high school education with GPAX 3.63.',
-      imageAlt: 'Chonradsadornumrung School campus',
-      imageCaption: 'Chonradsadornumrung School, Chonburi.',
-      mapUrl: 'https://maps.google.com/?q=Chonradsadornumrung+School',
-    },
-  ];
+  const experiences = experienceBases.map((base) => {
+    const trans = t.experience.list.find((e) => e.id === base.id);
+    return {
+      ...base,
+      title: trans?.title || '',
+      company: trans?.company || '',
+      date: trans?.date || '',
+      description: trans?.description || '',
+      imageCaption: trans?.caption || '',
+    };
+  });
 
   return (
     <section id="experience" className="section container animate-fade-in delay-3">
-      <h2 className="section-title">Experience & Education</h2>
+      <h2 className="section-title">{t.experience.title}</h2>
       <div className="timeline-wrapper">
         <div className="timeline-line"></div>
         {experiences.map(exp => (
@@ -119,7 +119,7 @@ const Experience = () => {
                 <figure className="timeline-proof">
                   <img src={exp.image} alt={exp.imageAlt || exp.title} className="timeline-proof-image" />
                   <figcaption className="timeline-proof-caption">
-                    {exp.imageCaption || 'Location evidence.'}
+                    {exp.imageCaption || t.experience.evidence}
                   </figcaption>
                 </figure>
               )}
@@ -132,3 +132,4 @@ const Experience = () => {
 };
 
 export default Experience;
+

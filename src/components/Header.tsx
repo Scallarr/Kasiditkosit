@@ -1,39 +1,50 @@
 import React from 'react';
 import studentImg from "../assets/รูปนักศึกษา.jpg";
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 const Header = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="home" className="section container animate-fade-in delay-1">
       <div className="hero-wrapper">
         <div className="hero-content">
           <div className="badge-glow" style={{ marginBottom: '1.5rem' }}>
             <span className="badge-dot"></span>
-            Available for Work
+            {t.header.available}
           </div>
           <h1 className="hero-title">
-            Hello, I'm{' '}
-            <span className="hero-name-gradient">Kasidit Kosit</span>
+            {t.header.hello}{' '}
+            <span className="hero-name-gradient">{t.header.title_name}</span>
           </h1>
 
           <div className="hero-subtitle-row">
-            <span className="hero-subtitle">Full Stack Developer</span>
+            <span className="hero-subtitle">{t.header.role}</span>
             <span className="hero-subtitle-dot">•</span>
-            <span className="hero-subtitle-focus">Front-end + Back-end</span>
+            <span className="hero-subtitle-focus">{t.header.focus}</span>
           </div>
 
           <p className="hero-description">
-            A passionate Full Stack Developer building modern{' '}
-            <span className="hero-keyword">Web </span> and{' '}
-            <span className="hero-keyword">Mobile Applications</span> with intuitive user experiences, scalable{' '}
-            <span className="hero-keyword">Backend Systems</span>, and efficient{' '}
-            <span className="hero-keyword">Databases</span>.
+            {t.header.description_prefix}
+            <span className="hero-keyword">{t.header.description_role}</span>
+            {t.header.description_middle}
+            <span className="hero-keyword">{t.header.description_web}</span>
+            {t.header.description_and}
+            <span className="hero-keyword">{t.header.description_mobile}</span>
+            {t.header.description_post}
+            <span className="hero-keyword">{t.header.description_backend}</span>
+            {t.header.description_post_backend}
+            <span className="hero-keyword">{t.header.description_db}</span>
+            {t.header.description_end}
           </p>
           <div className="btn-group">
             <a href="#contact" className="btn-primary">
-              Contact Me
+              {t.header.btn_contact}
             </a>
             <a href="#about" className="btn-secondary">
-              About Me
+              {t.header.btn_about}
             </a>
           </div>
         </div>
@@ -57,3 +68,4 @@ const Header = () => {
 };
 
 export default Header;
+

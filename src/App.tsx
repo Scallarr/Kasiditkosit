@@ -6,9 +6,14 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { translations } from './translations';
 import './index.css';
 
-function App() {
+function MainApp() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <div className="app">
       {/* Premium Ambient Background Elements */}
@@ -44,13 +49,22 @@ function App() {
           fontSize: '0.95rem'
         }}
       >
-        <p style={{ fontWeight: 500, color: '#ffffff' }}>© {new Date().getFullYear()} Kasidit Kosit. All rights reserved.</p>
+        <p style={{ fontWeight: 500, color: '#ffffff' }}>© {new Date().getFullYear()} Kasidit Kosit. {t.footer.rights}</p>
         <p style={{ marginTop: '0.6rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-          Designed & Crafted with React, TypeScript & Premium Vanilla CSS
+          {t.footer.designed}
         </p>
       </footer>
     </div>
   );
 }
 
+function App() {
+  return (
+    <LanguageProvider>
+      <MainApp />
+    </LanguageProvider>
+  );
+}
+
 export default App;
+

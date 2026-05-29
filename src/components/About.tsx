@@ -1,42 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-const statData = [
-  {
-    icon: '💻',
-    title: 'Full Stack',
-    label: 'Web & Mobile Development',
-    detail:
-      'Experienced in both frontend and backend development, including user interface design, API development, server-side systems, and database management.',
-  },
-  {
-    icon: '🤖',
-    title: 'AI Integration',
-    label: 'Smart Systems & Automation',
-    detail:
-      'Integrating AI-powered features, automation systems, and intelligent tools into modern web and mobile applications.',
-  },
-  {
-    icon: '🧠',
-    title: '10+ Languages',
-    label: 'Programming & Development Tools',
-    detail:
-      'Hands‑on experience with HTML5, CSS,Bootstrap,TypeScript, JavaScript, Python, Dart(Flutter), C++, C#,SQL.',
-  },
-  {
-    icon: '🚀',
-    title: 'Fast Learner',
-    label: 'Quickly Adapt to New Technologies',
-    detail:
-      'Proven ability to pick up unfamiliar frameworks and ship production‑quality features in days, not weeks.',
-  },
-];
+import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../translations';
 
 const About = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+  const statData = t.about.stats;
+
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
 
   const open = (i: number) => setOpenIndex(i);
   const close = () => setOpenIndex(null);
+
+  // Helper: wrap keyword matches in hero-keyword spans
+  const highlightText = (text: string, keywords: string[]) => {
+    if (!keywords.length) return text;
+    // Build a regex that matches any keyword (longest first to avoid partial matches)
+    const sorted = [...keywords].sort((a, b) => b.length - a.length);
+    const pattern = new RegExp(`(${sorted.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
+    const parts = text.split(pattern);
+    return parts.map((part, i) =>
+      keywords.includes(part)
+        ? <span key={i} className="hero-keyword">{part}</span>
+        : part
+    );
+  };
 
   React.useEffect(() => {
     if (openIndex !== null) {
@@ -51,7 +40,7 @@ const About = () => {
 
   return (
     <section id="about" className="section container animate-fade-in delay-2">
-      <h2 className="section-title">About Me</h2>
+      <h2 className="section-title">{t.about.title}</h2>
       <div className="glass-card about-grid">
         <div className="about-text">
           <p
@@ -62,26 +51,12 @@ const About = () => {
               marginBottom: '1.25rem',
             }}
           >
-            I believe that great software is not just about writing code, but about
-            solving real problems and delivering exceptional user experiences.
+            {t.about.quote}
           </p>
 
-          <p>
-            Hello! I am a passionate <span className="hero-keyword">Full Stack Developer</span>{' '}
-            specializing in modern <span className="hero-keyword">Web Applications</span>{' '}
-            and <span className="hero-keyword">Mobile Applications</span>. I enjoy turning
-            ideas into digital products by combining intuitive user interfaces with
-            scalable and reliable systems behind the scenes.
-          </p>
+          <p>{highlightText(t.about.p1, t.about.p1Highlights)}</p>
 
-          <p style={{ margin: 0 }}>
-            My expertise includes developing <span className="hero-keyword">Frontend Experiences</span>,
-            building scalable <span className="hero-keyword">Backend Systems</span>,
-            designing efficient <span className="hero-keyword">APIs</span>, and managing
-            robust <span className="hero-keyword">Databases</span>. I am passionate about
-            creating impactful software solutions while continuously learning new
-            technologies and modern development practices.
-          </p>
+          <p style={{ margin: 0 }}>{highlightText(t.about.p2, t.about.p2Highlights)}</p>
         </div>
 
         <div className="stats-grid">
@@ -117,3 +92,4 @@ const About = () => {
 };
 
 export default About;
+
