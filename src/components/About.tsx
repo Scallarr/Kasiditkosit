@@ -40,7 +40,11 @@ const About = () => {
 
   return (
     <section id="about" className="section container">
-      <h2 className="section-title reveal">{t.about.title}</h2>
+      <div className="title-frame-container reveal">
+        <div className="title-frame">
+          <h2 className="section-title">{t.about.title}</h2>
+        </div>
+      </div>
       <div className="glass-card about-grid reveal">
         <div className="about-text">
           <p

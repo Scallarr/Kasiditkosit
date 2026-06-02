@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import studentImg from "../assets/รูปนักศึกษา.jpg";
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
 
+const focusWords = {
+  en: ['Front-end Developer', 'Back-end Developer', 'Mobile Apps Developer', 'Web Development', 'AI Integration Engineer'],
+  th: ['นักพัฒนา Front-end', 'นักพัฒนา Back-end', 'นักพัฒนาแอปพลิเคชันมือถือ', 'นักพัฒนาเว็บไซต์', 'วิศวกรการผสานรวม AI'],
+};
+
 const Header = () => {
   const { language } = useLanguage();
   const t = translations[language];
+  const words = focusWords[language] ?? focusWords.en;
+
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Fade out
+      setVisible(false);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % words.length);
+        // Fade in
+        setVisible(true);
+      }, 400);
+    }, 2400);
+    return () => clearInterval(interval);
+  }, [words.length]);
 
   return (
     <section id="home" className="section container animate-fade-in delay-1">
@@ -23,7 +45,18 @@ const Header = () => {
           <div className="hero-subtitle-row">
             <span className="hero-subtitle">{t.header.role}</span>
             <span className="hero-subtitle-dot">•</span>
-            <span className="hero-subtitle-focus">{t.header.focus}</span>
+            <span
+              className="hero-subtitle-focus"
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'translateY(0)' : 'translateY(-8px)',
+                transition: 'opacity 0.35s ease, transform 0.35s ease',
+                display: 'inline-block',
+                minWidth: '130px',
+              }}
+            >
+              {words[index]}
+            </span>
           </div>
 
           <p className="hero-description">

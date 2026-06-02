@@ -55,7 +55,11 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section container">
-      <h2 className="section-title reveal">{t.contact.title}</h2>
+      <div className="title-frame-container reveal">
+        <div className="title-frame">
+          <h2 className="section-title">{t.contact.title}</h2>
+        </div>
+      </div>
       <div className="glass-card contact-grid contact-grid-single reveal">
         <div className="contact-info-card">
           <h3 className="contact-heading">{t.contact.heading}</h3>

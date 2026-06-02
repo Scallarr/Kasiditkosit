@@ -353,7 +353,11 @@ const Projects = () => {
 
   return (
     <section id="projects" className="section container">
-      <h2 className="section-title reveal">{t.projects.title}</h2>
+      <div className="title-frame-container reveal">
+        <div className="title-frame">
+          <h2 className="section-title">{t.projects.title}</h2>
+        </div>
+      </div>
 
       <div className="projects-grid">
         {projects.map((project, index) => (

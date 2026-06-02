@@ -75,7 +75,11 @@ const Experience = () => {
 
   return (
     <section id="experience" className="section container">
-      <h2 className="section-title reveal">{t.experience.title}</h2>
+      <div className="title-frame-container reveal">
+        <div className="title-frame">
+          <h2 className="section-title">{t.experience.title}</h2>
+        </div>
+      </div>
 
       <div className="timeline-wrapper">
         <div className="timeline-line"></div>

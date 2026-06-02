@@ -172,7 +172,11 @@ const Skills = () => {
 
   return (
     <section id="skills" className="section container">
-      <h2 className="section-title reveal">{t.skills.title}</h2>
+      <div className="title-frame-container reveal">
+        <div className="title-frame">
+          <h2 className="section-title">{t.skills.title}</h2>
+        </div>
+      </div>
 
       <div className="skills-grid">
         {skillCategories.map((category, index) => (
