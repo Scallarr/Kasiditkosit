@@ -51,15 +51,24 @@ const Header = () => {
 
         <div className="profile-container">
           <div className="profile-glow-ring"></div>
-          <div className="profile-card">
-            <img
-              src={studentImg}
-              alt="Kasidit Pimpimai"
-              onError={(e) => {
-                // Failback to fallback illustration or empty placeholder if image has issues
-                e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80";
-              }}
-            />
+          <div className="profile-ring-rotate"></div>
+          <div className="profile-orbit">
+            <span className="orbit-dot orbit-dot-1"></span>
+            <span className="orbit-dot orbit-dot-2"></span>
+            <span className="orbit-dot orbit-dot-3"></span>
+          </div>
+          <div className="profile-float">
+            <div className="profile-card">
+              <img
+                src={studentImg}
+                alt="Kasidit Pimpimai"
+                onError={(e) => {
+                  // Failback to fallback illustration or empty placeholder if image has issues
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80";
+                }}
+              />
+              <span className="profile-shine"></span>
+            </div>
           </div>
         </div>
       </div>
