@@ -352,12 +352,16 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="section container animate-fade-in delay-2">
-      <h2 className="section-title">{t.projects.title}</h2>
+    <section id="projects" className="section container">
+      <h2 className="section-title reveal">{t.projects.title}</h2>
 
       <div className="projects-grid">
-        {projects.map((project) => (
-          <div key={project.id} className="glass-card project-card">
+        {projects.map((project, index) => (
+          <div
+            key={project.id}
+            className="glass-card project-card reveal"
+            style={{ transitionDelay: `${(index % 3) * 0.1}s` }}
+          >
             <div
               className="project-img-container"
               style={{ cursor: 'pointer' }}

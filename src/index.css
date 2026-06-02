@@ -303,6 +303,60 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left {
+  transform: translateX(-38px);
+}
+
+.reveal-right {
+  transform: translateX(38px);
+}
+
+.reveal-scale {
+  transform: scale(0.9);
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Navbar entrance */
+.header-nav {
+  animation: nav-drop 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes nav-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
    LAYOUT
 ═══════════════════════════════════════════════════ */
 .container {

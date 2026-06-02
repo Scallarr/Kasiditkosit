@@ -171,14 +171,15 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="section container animate-fade-in delay-1">
-      <h2 className="section-title">{t.skills.title}</h2>
+    <section id="skills" className="section container">
+      <h2 className="section-title reveal">{t.skills.title}</h2>
 
       <div className="skills-grid">
         {skillCategories.map((category, index) => (
           <div
             key={index}
-            className={`glass-card animate-fade-in delay-${index + 1} ${category.title === 'Fullstack Development' ? 'skills-card-fullstack' : ''}`}
+            className={`glass-card reveal ${category.title === 'Fullstack Development' ? 'skills-card-fullstack' : ''}`}
+            style={{ transitionDelay: `${index * 0.1}s` }}
           >
             <h3 className="skills-category-title">
               <span className="skills-category-icon">{category.icon}</span>

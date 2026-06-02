@@ -54,22 +54,23 @@ const Contact = () => {
   const t = translations[language];
 
   return (
-    <section id="contact" className="section container animate-fade-in delay-2">
-      <h2 className="section-title">{t.contact.title}</h2>
-      <div className="glass-card contact-grid contact-grid-single">
+    <section id="contact" className="section container">
+      <h2 className="section-title reveal">{t.contact.title}</h2>
+      <div className="glass-card contact-grid contact-grid-single reveal">
         <div className="contact-info-card">
           <h3 className="contact-heading">{t.contact.heading}</h3>
           <p className="contact-intro">
             {t.contact.intro}
           </p>
 
-          {contactItems.map((item) => (
+          {contactItems.map((item, index) => (
             <a
               key={item.labelKey}
               href={item.href}
               target={item.href.startsWith('http') ? '_blank' : undefined}
               rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="contact-method-item"
+              className="contact-method-item reveal"
+              style={{ transitionDelay: `${index * 0.07}s` }}
             >
               <span className="contact-method-icon">{item.icon}</span>
               <div className="contact-method-details">

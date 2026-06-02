@@ -74,14 +74,17 @@ const Experience = () => {
   });
 
   return (
-    <section id="experience" className="section container animate-fade-in delay-3">
-      <h2 className="section-title">{t.experience.title}</h2>
+    <section id="experience" className="section container">
+      <h2 className="section-title reveal">{t.experience.title}</h2>
 
       <div className="timeline-wrapper">
         <div className="timeline-line"></div>
 
-        {experiences.map((exp) => (
-          <div key={exp.id} className="timeline-item">
+        {experiences.map((exp, index) => (
+          <div
+            key={exp.id}
+            className={`timeline-item reveal ${index % 2 === 0 ? 'reveal-left' : 'reveal-right'}`}
+          >
             <div className="timeline-dot"></div>
 
             <div className="glass-card timeline-card">

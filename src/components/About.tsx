@@ -39,9 +39,9 @@ const About = () => {
   }, [openIndex]);
 
   return (
-    <section id="about" className="section container animate-fade-in delay-2">
-      <h2 className="section-title">{t.about.title}</h2>
-      <div className="glass-card about-grid">
+    <section id="about" className="section container">
+      <h2 className="section-title reveal">{t.about.title}</h2>
+      <div className="glass-card about-grid reveal">
         <div className="about-text">
           <p
             style={{
@@ -63,9 +63,9 @@ const About = () => {
           {statData.map((s, i) => (
             <div
               key={i}
-              className={`stat-item animate-fade-in delay-${i + 1}`}
+              className="stat-item reveal reveal-scale"
               onClick={() => open(i)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', transitionDelay: `${i * 0.08}s` }}
             >
               <span className="stat-icon">{s.icon}</span>
               <span className="stat-number">{s.title}</span>

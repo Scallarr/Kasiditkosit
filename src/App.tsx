@@ -8,6 +8,7 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { translations } from './translations';
+import { useScrollReveal } from './hooks/useScrollReveal';
 import './index.css';
 
 function MainApp() {
@@ -15,6 +16,8 @@ function MainApp() {
   const t = translations[language];
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+
+  useScrollReveal([language, loading]);
 
   useEffect(() => {
     const handleLoad = () => {
