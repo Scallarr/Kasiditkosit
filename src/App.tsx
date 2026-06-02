@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import About from './components/About';
@@ -13,9 +13,41 @@ import './index.css';
 function MainApp() {
   const { language } = useLanguage();
   const t = translations[language];
+  const [loading, setLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      setTimeout(() => {
+        setFadeOut(true);
+        setTimeout(() => setLoading(false), 500);
+      }, 800);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      const timeout = setTimeout(handleLoad, 3500); // 3.5s fallback
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        clearTimeout(timeout);
+      };
+    }
+  }, []);
 
   return (
     <div className="app">
+      {loading && (
+        <div className={`preloader ${fadeOut ? 'fade-out' : ''}`}>
+          <div className="preloader-spinner-container">
+            <div className="preloader-spinner"></div>
+            <div className="preloader-spinner-inner"></div>
+          </div>
+          <span className="preloader-text">{t.loader.loading}</span>
+        </div>
+      )}
+
       {/* Premium Ambient Background Elements */}
       <div className="bg-grid-overlay"></div>
       <div className="ambient-light ambient-light-1"></div>

@@ -382,6 +382,10 @@ export const translations = {
     footer: {
       rights: "All rights reserved.",
       designed: "Designed & Crafted with React, TypeScript & Premium Vanilla CSS"
+    },
+    // Loader
+    loader: {
+      loading: "LOADING"
     }
   },
 
@@ -768,6 +772,10 @@ export const translations = {
     footer: {
       rights: "สงวนลิขสิทธิ์ทั้งหมด",
       designed: "ออกแบบและสร้างสรรค์ขึ้นด้วย React, TypeScript & Premium Vanilla CSS"
+    },
+    // Loader
+    loader: {
+      loading: "กำลังโหลด"
     }
   }
 };
