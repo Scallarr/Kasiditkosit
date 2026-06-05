@@ -10,6 +10,8 @@ import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { translations } from './translations';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import './index.css';
+import { initGA, trackPageView } from './analytics';
+
 
 function MainApp() {
   const { language } = useLanguage();
@@ -38,6 +40,12 @@ function MainApp() {
       };
     }
   }, []);
+
+useScrollReveal([language, loading]);
+  useEffect(() => {
+  initGA();
+  trackPageView();
+}, []);
 
   return (
     <div className="app">
