@@ -13,6 +13,8 @@ import './index.css';
 import { initGA, trackPageView } from './analytics';
 
 
+
+
 function MainApp() {
   const { language } = useLanguage();
   const t = translations[language];
